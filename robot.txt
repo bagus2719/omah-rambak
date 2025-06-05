@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://omah-rambak.great-site.net/sitemap.xml

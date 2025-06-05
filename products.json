@@ -1,0 +1,65 @@
+[
+  {
+    "id": "KSM001",
+    "name": "Kerupuk Kulit Sapi Matang 1/4 kg",
+    "image": "assets/images/kerupuk-rambak-matang.jpeg",
+    "description": "Kerupuk kulit sapi asli, sudah digoreng, matang dan renyah. Kemasan 1/4 kg.",
+    "price": "35.000",
+    "category": "matang",
+    "package_type": "kiloan"
+  },
+  {
+    "id": "KSM002",
+    "name": "Kerupuk Kulit Sapi Matang 1/2 kg",
+    "image": "assets/images/kerupuk-rambak-matang.jpeg",
+    "description": "Kerupuk kulit sapi asli, sudah digoreng, matang dan renyah. Kemasan 1/2 kg.",
+    "price": "65.000",
+    "category": "matang",
+    "package_type": "kiloan"
+  },
+  {
+    "id": "KSM003",
+    "name": "Kerupuk Kulit Sapi Matang 1 kg",
+    "image": "assets/images/kerupuk-rambak-matang.jpeg",
+    "description": "Kerupuk kulit sapi asli, sudah digoreng, matang dan renyah. Kemasan 1 kg.",
+    "price": "120.000",
+    "category": "matang",
+    "package_type": "kiloan"
+  },
+  {
+    "id": "KSN001",
+    "name": "Kerupuk Kulit Sapi Mentah 1/4 kg",
+    "image": "assets/images/kerupuk-rambak-mentah.jpeg",
+    "description": "Kerupuk kulit sapi asli mentah, siap digoreng. Kemasan 1/4 kg.",
+    "price": "30.000",
+    "category": "mentah",
+    "package_type": "kiloan"
+  },
+  {
+    "id": "KSN002",
+    "name": "Kerupuk Kulit Sapi Mentah 1/2 kg",
+    "image": "assets/images/kerupuk-rambak-mentah.jpeg",
+    "description": "Kerupuk kulit sapi asli mentah, siap digoreng. Kemasan 1/2 kg.",
+    "price": "55.000",
+    "category": "mentah",
+    "package_type": "kiloan"
+  },
+  {
+    "id": "KSN003",
+    "name": "Kerupuk Kulit Sapi Mentah 1 kg",
+    "image": "assets/images/kerupuk-rambak-mentah.jpeg",
+    "description": "Kerupuk kulit sapi asli mentah, siap digoreng. Kemasan 1 kg.",
+    "price": "100.000",
+    "category": "mentah",
+    "package_type": "kiloan"
+  },
+  {
+    "id": "KSE001",
+    "name": "Kerupuk Kulit Sapi Matang Eceran (5 pcs)",
+    "image": "assets/images/kerupuk-eceran.jpg",
+    "description": "Kerupuk kulit sapi asli, matang dan renyah. Kemasan eceran isi 5 pcs.",
+    "price": "10.000",
+    "category": "eceran",
+    "package_type": "eceran"
+  }
+]
