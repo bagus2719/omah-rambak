@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Katalog Produk Kerupuk Kulit Sapi Lengkap - Omah Rambak</title>
-    <meta name="description" content="Lihat dan pilih berbagai produk kerupuk kulit sapi dari Omah Rambak. Tersedia kerupuk matang, mentah, kiloan, dan eceran. Kualitas terjamin, pesan via WhatsApp!">
+    <meta name="description" content="Lihat dan pilih berbagai produk kerupuk kulit sapi dari Omah Rambak. Tersedia kerupuk matang, mentah, kiloan, dan eceran. Kualitas terjamin!">
     <meta name="keywords" content="katalog omah rambak, daftar harga kerupuk kulit, beli kerupuk kulit sapi, kerupuk sapi matang, kerupuk sapi mentah, harga rambak sapi">
     
     <script src="https://cdn.tailwindcss.com"></script>
@@ -36,7 +36,7 @@
         #productCountDisplay.count-updated { animation: quickFade 0.5s ease-out; }
         @keyframes quickFade { 0% { opacity: 0.5; } 50% { opacity: 1; font-weight: bold;} 100% { opacity: 1; font-weight: normal;} }
         .cart-item-count-badge {
-            background-color: #ef4444; /* red-500 */
+            background-color: #ef4444;
             color: white;
             border-radius: 50%;
             padding: 0.1em 0.4em;
@@ -46,6 +46,28 @@
             right: -10px;
             line-height: 1;
         }
+        #toastNotification {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translate(-50%, -30px) scale(0.95);
+            padding: 12px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            opacity: 0;
+            transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+            z-index: 1000;
+            font-size: 0.9rem;
+            max-width: 90%; 
+            text-align: center; 
+        }
+        #toastNotification.show {
+            opacity: 1;
+            transform: translate(-50%, 0) scale(1);
+        }
+        #toastNotification.success { background-color: #22c55e; color: white; }
+        #toastNotification.error { background-color: #ef4444; color: white; }
+        #toastNotification.info { background-color: #3b82f6; color: white; }
     </style>
 </head>
 <body class="bg-orange-50 text-gray-800">
@@ -56,7 +78,7 @@
             <div class="flex items-center">
                 <nav class="hidden md:flex md:space-x-2 lg:space-x-4 items-center">
                     <a href="index.html" id="navBeranda" class="nav-link-animate hover:text-orange-200 px-2 py-1 rounded-md">Beranda</a>
-                    <a href="catalog.html" id="navKatalog" class="nav-link-animate active-link text-orange-200 font-semibold px-2 py-1 rounded-md">Katalog</a>
+                    <a href="catalog.html" id="navKatalog" class="nav-link-animate px-2 py-1 rounded-md">Katalog</a>
                     <a href="about.html" id="navTentang" class="nav-link-animate hover:text-orange-200 px-2 py-1 rounded-md">Tentang Kami</a>
                     <a href="cart.html" id="navKeranjang" class="nav-link-animate hover:text-orange-200 px-3 py-1 rounded-md relative">
                         <i class="fas fa-shopping-cart"></i>
@@ -70,7 +92,7 @@
         </div>
         <div class="md:hidden hidden bg-orange-600" id="mobileMenu">
             <a href="index.html" class="block px-6 py-3 hover:bg-orange-500 hover:text-white transition-colors duration-200">Beranda</a>
-            <a href="catalog.html" class="block px-6 py-3 text-orange-200 font-semibold hover:bg-orange-500 hover:text-white transition-colors duration-200">Katalog</a>
+            <a href="catalog.html" class="block px-6 py-3 hover:bg-orange-500 hover:text-white transition-colors duration-200">Katalog</a>
             <a href="about.html" class="block px-6 py-3 hover:bg-orange-500 hover:text-white transition-colors duration-200">Tentang Kami</a>
             <a href="cart.html" class="block px-6 py-3 hover:bg-orange-500 hover:text-white transition-colors duration-200 relative">
                 Keranjang <span id="cartItemCountMobile" class="absolute top-1 right-3 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full hidden">0</span>
@@ -151,15 +173,35 @@
         <div class="container mx-auto px-4 sm:px-6 text-center">
             <p>&copy; 2025 Omah Rambak. Semua Hak Dilindungi.</p>
             <div class="mt-4">
-                <a href="#" class="px-2 hover:text-orange-200" aria-label="Facebook Omah Rambak">Facebook</a>
-                <a href="#" class="px-2 hover:text-orange-200" aria-label="Instagram Omah Rambak">Instagram</a>
-                <a href="https://wa.me/6281252736904" target="_blank" class="px-2 hover:text-orange-200" aria-label="Whatsapp Omah Rambak">Whatsapp</a>
+                <a href="#" class="px-2 hover:text-orange-200" aria-label="Facebook Omah Rambak"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="px-2 hover:text-orange-200" aria-label="Instagram Omah Rambak"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/6283111481327" target="_blank" class="px-2 hover:text-orange-200" aria-label="Whatsapp Omah Rambak"><i class="fab fa-whatsapp"></i></a>
             </div>
         </div>
     </footer>
 
+    <div id="toastNotification"><span id="toastMessage"></span></div>
+    
+    <script type="application/ld+json" id="dynamicPageSchema">
+    </script>
+
     <script>
-        // --- Cart Management Functions ---
+        let toastTimeout;
+        function showToast(message, type = 'success', duration = 3000) {
+            const toast = document.getElementById('toastNotification');
+            const toastMessage = document.getElementById('toastMessage');
+            if (!toast || !toastMessage) { console.error("Toast elements not found!"); alert(message); return; }
+            toastMessage.textContent = message;
+            toast.className = 'fixed top-5 right-5 text-white py-3 px-5 rounded-lg shadow-md opacity-0 transform translate-y-[-20px] transition-all duration-300 ease-out z-[1000]';
+            if (type === 'success') toast.classList.add('success');
+            else if (type === 'error') toast.classList.add('error');
+            else if (type === 'info') toast.classList.add('info');
+            else toast.classList.add('success');
+            toast.classList.add('show');
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => { toast.classList.remove('show'); }, duration);
+        }
+
         const CART_KEY = 'omahRambakCart';
         function getCart() { return JSON.parse(localStorage.getItem(CART_KEY)) || []; }
         function saveCart(cart) { localStorage.setItem(CART_KEY, JSON.stringify(cart)); updateCartIconCount(); }
@@ -173,32 +215,19 @@
                 cart.push({ id: productId, name: productName, price: price, image: productImage, quantity: 1 });
             }
             saveCart(cart);
-            alert(`"${productName}" telah ditambahkan ke keranjang!`);
+            showToast(`"${productName}" ditambahkan ke keranjang!`, 'success');
         }
         function updateCartIconCount() {
             const cart = getCart();
             const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-            const cartCountElement = document.getElementById('cartItemCount');
-            const cartCountMobileElement = document.getElementById('cartItemCountMobile'); 
-            
-            if (cartCountElement) {
-                if (totalItems > 0) {
-                    cartCountElement.textContent = totalItems;
-                    cartCountElement.classList.remove('hidden');
-                } else {
-                    cartCountElement.classList.add('hidden');
+            const elementsToUpdate = [document.getElementById('cartItemCount'), document.getElementById('cartItemCountMobile')];
+            elementsToUpdate.forEach(el => {
+                if (el) {
+                    if (totalItems > 0) { el.textContent = totalItems; el.classList.remove('hidden'); } 
+                    else { el.classList.add('hidden'); }
                 }
-            }
-             if (cartCountMobileElement) {
-                 if (totalItems > 0) {
-                    cartCountMobileElement.textContent = totalItems;
-                    cartCountMobileElement.classList.remove('hidden');
-                } else {
-                    cartCountMobileElement.classList.add('hidden');
-                }
-            }
+            });
         }
-        // --- End Cart Management Functions ---
 
         const mobileMenuButton = document.getElementById('mobileMenuButton');
         const mobileMenu = document.getElementById('mobileMenu');
@@ -254,25 +283,16 @@
                 checkbox.addEventListener('change', applyFiltersAndSort); 
             });
 
-            const currentPage = window.location.pathname.split("/").pop();
-            const navLinks = { beranda: 'navBeranda', katalog: 'navKatalog', tentang: 'navTentang', keranjang: 'navKeranjang' };
+            const currentPage = window.location.pathname.split("/").pop() || 'index.html';
+            const navLinks = { 'index.html': 'navBeranda', 'catalog.html': 'navKatalog', 'about.html': 'navTentang', 'cart.html': 'navKeranjang' };
             Object.values(navLinks).forEach(id => {
                 const el = document.getElementById(id);
                 if (el) el.classList.remove('active-link', 'text-orange-200', 'font-semibold');
             });
-            
-            if (currentPage === 'catalog.html') {
-                const el = document.getElementById(navLinks.katalog);
-                if (el) el.classList.add('active-link', 'text-orange-200', 'font-semibold');
-            } else if (currentPage === 'index.html' || currentPage === '') {
-                 const el = document.getElementById(navLinks.beranda);
-                 if (el) el.classList.add('active-link', 'text-orange-200', 'font-semibold');
-            } else if (currentPage === 'about.html') {
-                 const el = document.getElementById(navLinks.tentang);
-                  if (el) el.classList.add('active-link', 'text-orange-200', 'font-semibold');
-            } else if (currentPage === 'cart.html') {
-                const el = document.getElementById(navLinks.keranjang);
-                 if (el) el.classList.add('active-link', 'text-orange-200', 'font-semibold');
+            const activeNavId = navLinks[currentPage];
+            if (activeNavId) {
+                const activeEl = document.getElementById(activeNavId);
+                if (activeEl) activeEl.classList.add('active-link', 'text-orange-200', 'font-semibold');
             }
         });
 
@@ -309,12 +329,12 @@
                 productsToDisplay.forEach((product, index) => {
                     const productCardHTML = `
                         <div id="${product.id}" class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col product-card product-card-hover transition-all duration-300 ease-out" style="transition-delay: ${index * 0.07}s;">
-                            <a href="#${product.id}" aria-label="Lihat detail ${product.name}"><img src="${product.image}" alt="${product.name} - Omah Rambak" class="w-full h-48 sm:h-56 object-cover"></a>
+                            <a href="#${product.id}" aria-label="Lihat detail ${product.name}"><img src="${product.image}" alt="${product.name}" class="w-full h-48 sm:h-56 object-cover"></a>
                             <div class="p-4 sm:p-6 flex flex-col flex-grow">
                                 <h3 class="text-base sm:text-lg md:text-xl font-semibold mb-2 text-orange-600"><a href="#${product.id}" class="hover:underline">${product.name}</a></h3>
                                 <p class="text-xs sm:text-sm text-gray-600 mb-3 flex-grow">${product.description}</p>
                                 <p class="text-sm sm:text-base md:text-lg font-bold text-orange-500 mb-4">Rp ${product.price}</p>
-                                <button onclick="addToCart('${product.id}', '${product.name}', '${product.price}', '${product.image}')" class="mt-auto w-full bg-orange-500 hover:bg-orange-700 text-white font-semibold py-2 px-3 sm:px-4 rounded-lg transition duration-300 flex items-center justify-center text-xs sm:text-sm button-click-effect"><i class="fas fa-cart-plus mr-2"></i> Tambah ke Keranjang</button>
+                                <button onclick="addToCart('${product.id}', '${product.name.replace(/'/g, "\\'")}', '${product.price}', '${product.image}')" class="mt-auto w-full bg-orange-500 hover:bg-orange-700 text-white font-semibold py-2 px-3 sm:px-4 rounded-lg transition duration-300 flex items-center justify-center text-xs sm:text-sm button-click-effect"><i class="fas fa-cart-plus mr-2"></i> Tambah ke Keranjang</button>
                             </div>
                         </div>`;
                     productContainer.insertAdjacentHTML('beforeend', productCardHTML);
@@ -357,8 +377,10 @@
         }
 
         function applyFiltersAndSort() { 
-            if (!allProducts) { console.warn("Data produk belum dimuat."); if (productCountDisplay) productCountDisplay.textContent = 'Data produk tidak tersedia.'; return; }
-            if (allProducts.length === 0 && productContainer.innerHTML.includes('Gagal memuat produk')) return; 
+            if (!allProducts || allProducts.length === 0 && productContainer.innerHTML.includes('Gagal memuat produk')) {
+                if (productCountDisplay && !allProducts) productCountDisplay.textContent = 'Data produk tidak tersedia.';
+                return;
+            }
             setLoadingState(true);
             setTimeout(() => {
                 let filteredProducts = [...allProducts];
@@ -382,20 +404,31 @@
 
         function injectPageSchema() {
             const oldSchemaElement = document.getElementById('dynamicPageSchema');
-            if (oldSchemaElement) oldSchemaElement.remove();
+            if (oldSchemaElement) oldSchemaElement.remove(); // Hapus skema lama jika ada
+            
+            const newScriptElement = document.createElement('script'); // Buat elemen skrip baru
+            newScriptElement.type = 'application/ld+json';
+            newScriptElement.id = 'dynamicPageSchema'; // Beri ID baru
+
             if (currentDisplayedProductSchemas.length > 0) {
-                const scriptElement = document.createElement('script');
-                scriptElement.type = 'application/ld+json';
-                scriptElement.id = 'dynamicPageSchema';
                 const itemListSchema = {
                     "@context": "https://schema.org", "@type": "ItemList", "name": "Katalog Produk Omah Rambak",
                     "description": "Daftar produk kerupuk kulit sapi dari Omah Rambak yang tersedia.", "url": `${domain}/catalog.html`,
                     "numberOfItems": currentDisplayedProductSchemas.length,
                     "itemListElement": currentDisplayedProductSchemas.map((productSchema, index) => ({ "@type": "ListItem", "position": index + 1, "item": productSchema }))
                 };
-                scriptElement.textContent = JSON.stringify(itemListSchema);
-                document.head.appendChild(scriptElement);
+                newScriptElement.textContent = JSON.stringify(itemListSchema);
+            } else {
+                 // Schema dasar untuk halaman katalog jika tidak ada produk (atau sebelum produk dimuat)
+                newScriptElement.textContent = JSON.stringify({
+                    "@context": "https://schema.org",
+                    "@type": "WebPage",
+                    "name": "Katalog Produk Omah Rambak",
+                    "description": "Jelajahi berbagai pilihan kerupuk kulit sapi berkualitas dari Omah Rambak.",
+                    "url": `${domain}/catalog.html`
+                });
             }
+            document.head.appendChild(newScriptElement);
         }
     </script>
 </body>

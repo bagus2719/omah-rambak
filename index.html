@@ -21,7 +21,6 @@
             background-size: cover;
             background-position: center;
         }
-        /* === ANIMASI UMUM === */
         .animate-on-scroll { opacity: 0; transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
         .animate-on-scroll.is-visible { opacity: 1; transform: none; }
         .fade-in-up { transform: translateY(30px); }
@@ -51,8 +50,41 @@
             right: -10px;
             line-height: 1;
         }
+        #toastNotification {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translate(-50%, -30px) scale(0.95);
+            padding: 12px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            opacity: 0;
+            transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+            z-index: 1000;
+            font-size: 0.9rem;
+            max-width: 90%; 
+            text-align: center; 
+        }
+        #toastNotification.show {
+            opacity: 1;
+            transform: translate(-50%, 0) scale(1);
+        }
+        #toastNotification.success { background-color: #22c55e; color: white; }
+        #toastNotification.error { background-color: #ef4444; color: white; }
+        #toastNotification.info { background-color: #3b82f6; color: white; }
     </style>
     <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Omah Rambak",
+        "url": "https://omah-rambak.great-site.net/index.html",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://omah-rambak.great-site.net/catalog.html?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
     </script>
 </head>
 <body class="bg-orange-50 text-gray-800">
@@ -62,7 +94,7 @@
             <a href="index.html" class="text-2xl font-bold">Omah Rambak</a>
             <div class="flex items-center">
                 <nav class="hidden md:flex md:space-x-2 lg:space-x-4 items-center">
-                    <a href="index.html" id="navBeranda" class="nav-link-animate active-link text-orange-200 font-semibold px-2 py-1 rounded-md">Beranda</a>
+                    <a href="index.html" id="navBeranda" class="nav-link-animate px-2 py-1 rounded-md">Beranda</a>
                     <a href="catalog.html" id="navKatalog" class="nav-link-animate hover:text-orange-200 px-2 py-1 rounded-md">Katalog</a>
                     <a href="about.html" id="navTentang" class="nav-link-animate hover:text-orange-200 px-2 py-1 rounded-md">Tentang Kami</a>
                     <a href="cart.html" id="navKeranjang" class="nav-link-animate hover:text-orange-200 px-3 py-1 rounded-md relative">
@@ -76,7 +108,7 @@
             </div>
         </div>
         <div class="md:hidden hidden bg-orange-600" id="mobileMenu">
-            <a href="index.html" class="block px-6 py-3 text-orange-200 font-semibold hover:bg-orange-500 hover:text-white transition-colors duration-200">Beranda</a>
+            <a href="index.html" class="block px-6 py-3 hover:bg-orange-500 hover:text-white transition-colors duration-200">Beranda</a>
             <a href="catalog.html" class="block px-6 py-3 hover:bg-orange-500 hover:text-white transition-colors duration-200">Katalog</a>
             <a href="about.html" class="block px-6 py-3 hover:bg-orange-500 hover:text-white transition-colors duration-200">Tentang Kami</a>
             <a href="cart.html" class="block px-6 py-3 hover:bg-orange-500 hover:text-white transition-colors duration-200 relative">
@@ -118,15 +150,32 @@
         <div class="container mx-auto px-4 sm:px-6 text-center">
             <p>&copy; 2025 Omah Rambak. Semua Hak Dilindungi.</p>
             <div class="mt-4">
-                <a href="#" class="px-2 hover:text-orange-200 transition-colors duration-200" aria-label="Facebook Omah Rambak">Facebook</a>
-                <a href="#" class="px-2 hover:text-orange-200 transition-colors duration-200" aria-label="Instagram Omah Rambak">Instagram</a>
-                <a href="https://wa.me/6281252736904" target="_blank" class="px-2 hover:text-orange-200 transition-colors duration-200" aria-label="Whatsapp Omah Rambak">Whatsapp</a>
+                <a href="#" class="px-2 hover:text-orange-200 transition-colors duration-200" aria-label="Facebook Omah Rambak"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="px-2 hover:text-orange-200 transition-colors duration-200" aria-label="Instagram Omah Rambak"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/6283111481327" target="_blank" class="px-2 hover:text-orange-200 transition-colors duration-200" aria-label="Whatsapp Omah Rambak"><i class="fab fa-whatsapp"></i></a>
             </div>
         </div>
     </footer>
 
+    <div id="toastNotification"><span id="toastMessage"></span></div>
+
     <script>
-        // --- Cart Management Functions ---
+        let toastTimeout;
+        function showToast(message, type = 'success', duration = 3000) {
+            const toast = document.getElementById('toastNotification');
+            const toastMessage = document.getElementById('toastMessage');
+            if (!toast || !toastMessage) { console.error("Toast elements not found!"); alert(message); return; }
+            toastMessage.textContent = message;
+            toast.className = 'fixed top-5 right-5 text-white py-3 px-5 rounded-lg shadow-md opacity-0 transform translate-y-[-20px] transition-all duration-300 ease-out z-[1000]';
+            if (type === 'success') toast.classList.add('success');
+            else if (type === 'error') toast.classList.add('error');
+            else if (type === 'info') toast.classList.add('info');
+            else toast.classList.add('success');
+            toast.classList.add('show');
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => { toast.classList.remove('show'); }, duration);
+        }
+
         const CART_KEY = 'omahRambakCart';
         function getCart() { return JSON.parse(localStorage.getItem(CART_KEY)) || []; }
         function saveCart(cart) { localStorage.setItem(CART_KEY, JSON.stringify(cart)); updateCartIconCount(); }
@@ -140,40 +189,24 @@
                 cart.push({ id: productId, name: productName, price: price, image: productImage, quantity: 1 });
             }
             saveCart(cart);
-            alert(`"${productName}" telah ditambahkan ke keranjang!`);
+            showToast(`"${productName}" ditambahkan ke keranjang!`, 'success');
         }
         function updateCartIconCount() {
             const cart = getCart();
             const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-            const cartCountElement = document.getElementById('cartItemCount');
-            const cartCountMobileElement = document.getElementById('cartItemCountMobile');
-            
-            if (cartCountElement) {
-                if (totalItems > 0) {
-                    cartCountElement.textContent = totalItems;
-                    cartCountElement.classList.remove('hidden');
-                } else {
-                    cartCountElement.classList.add('hidden');
+            const elementsToUpdate = [document.getElementById('cartItemCount'), document.getElementById('cartItemCountMobile')];
+            elementsToUpdate.forEach(el => {
+                if (el) {
+                    if (totalItems > 0) { el.textContent = totalItems; el.classList.remove('hidden'); } 
+                    else { el.classList.add('hidden'); }
                 }
-            }
-            if (cartCountMobileElement) {
-                 if (totalItems > 0) {
-                    cartCountMobileElement.textContent = totalItems;
-                    cartCountMobileElement.classList.remove('hidden');
-                } else {
-                    cartCountMobileElement.classList.add('hidden');
-                }
-            }
+            });
         }
-        // --- End Cart Management Functions ---
 
         const mobileMenuButton = document.getElementById('mobileMenuButton');
         const mobileMenu = document.getElementById('mobileMenu');
-
         if (mobileMenuButton && mobileMenu) {
-            mobileMenuButton.addEventListener('click', function() {
-                mobileMenu.classList.toggle('hidden');
-            });
+            mobileMenuButton.addEventListener('click', function() { mobileMenu.classList.toggle('hidden'); });
         }
 
         const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
@@ -181,14 +214,11 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('is-visible');
-                    if (!entry.target.classList.contains('keep-observing')) {
-                         observer.unobserve(entry.target);
-                    }
+                    if (!entry.target.classList.contains('keep-observing')) { observer.unobserve(entry.target); }
                 }
             });
         };
         const scrollObserver = new IntersectionObserver(observerCallback, observerOptions);
-        
         function observeElements(selector) {
             const elements = document.querySelectorAll(selector);
             elements.forEach(el => scrollObserver.observe(el));
@@ -198,26 +228,16 @@
             updateCartIconCount(); 
             loadFeaturedProducts();
             observeElements('.animate-on-scroll');
-
-            const currentPage = window.location.pathname.split("/").pop();
-            const navLinks = { beranda: 'navBeranda', katalog: 'navKatalog', tentang: 'navTentang', keranjang: 'navKeranjang' };
+            const currentPage = window.location.pathname.split("/").pop() || 'index.html';
+            const navLinks = { 'index.html': 'navBeranda', 'catalog.html': 'navKatalog', 'about.html': 'navTentang', 'cart.html': 'navKeranjang' };
             Object.values(navLinks).forEach(id => {
                 const el = document.getElementById(id);
                 if (el) el.classList.remove('active-link', 'text-orange-200', 'font-semibold');
             });
-            
-            if (currentPage === 'index.html' || currentPage === '') {
-                const el = document.getElementById(navLinks.beranda);
-                if (el) el.classList.add('active-link', 'text-orange-200', 'font-semibold');
-            } else if (currentPage === 'catalog.html') {
-                const el = document.getElementById(navLinks.katalog);
-                if (el) el.classList.add('active-link', 'text-orange-200', 'font-semibold');
-            } else if (currentPage === 'about.html') {
-                const el = document.getElementById(navLinks.tentang);
-                if (el) el.classList.add('active-link', 'text-orange-200', 'font-semibold');
-            } else if (currentPage === 'cart.html') {
-                const el = document.getElementById(navLinks.keranjang);
-                 if (el) el.classList.add('active-link', 'text-orange-200', 'font-semibold');
+            const activeNavId = navLinks[currentPage];
+            if (activeNavId) {
+                const activeEl = document.getElementById(activeNavId);
+                if (activeEl) activeEl.classList.add('active-link', 'text-orange-200', 'font-semibold');
             }
         });
 
@@ -239,7 +259,7 @@
                     const productCard = `
                         <div class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col product-card-hover transition-all duration-300 ease-out animate-on-scroll fade-in-up" style="transition-delay: ${index * 0.15}s;">
                             <a href="catalog.html#${product.id}" class="block" aria-label="Lihat detail ${product.name}">
-                                <img src="${product.image}" alt="${product.name} - Omah Rambak" class="w-full h-56 object-cover">
+                                <img src="${product.image}" alt="${product.name}" class="w-full h-56 object-cover">
                             </a>
                             <div class="p-4 sm:p-6 flex flex-col flex-grow">
                                 <h3 class="text-lg sm:text-xl font-semibold mb-2 text-orange-600">
@@ -247,7 +267,7 @@
                                 </h3>
                                 <p class="text-sm text-gray-600 mb-4 flex-grow">${shortDescription}</p>
                                 <p class="text-md sm:text-lg font-bold text-orange-500 mb-4">Rp ${product.price}</p>
-                                <button onclick="addToCart('${product.id}', '${product.name}', '${product.price}', '${product.image}')" class="mt-auto block w-full text-center bg-orange-500 hover:bg-orange-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-300 button-click-effect hover:shadow-md text-sm sm:text-base">
+                                <button onclick="addToCart('${product.id}', '${product.name.replace(/'/g, "\\'")}', '${product.price}', '${product.image}')" class="mt-auto block w-full text-center bg-orange-500 hover:bg-orange-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-300 button-click-effect hover:shadow-md text-sm sm:text-base">
                                     <i class="fas fa-cart-plus mr-2"></i>Tambah ke Keranjang
                                 </button>
                             </div>

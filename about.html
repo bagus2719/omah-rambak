@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tentang Omah Rambak - Produsen Kerupuk Kulit Sapi Berkualitas</title>
-    <meta name="description" content="Kenali lebih jauh Omah Rambak, komitmen kami terhadap kualitas kerupuk kulit sapi, dan cerita di balik kelezatan produk tradisional kami. Hubungi kami untuk informasi lebih lanjut.">
+    <meta name="description" content="Kenali lebih jauh Omah Rambak, komitmen kami terhadap kualitas kerupuk kulit sapi, dan cerita di balik kelezatan produk tradisional kami.">
     <meta name="keywords" content="tentang omah rambak, profil omah rambak, produsen kerupuk kulit, sejarah omah rambak, visi misi omah rambak">
     
     <script src="https://cdn.tailwindcss.com"></script>
@@ -35,7 +35,7 @@
         .team-member-img { width: 120px; height: 120px; object-fit: cover; border-radius: 50%; margin: 0 auto 1rem; border: 3px solid #fb923c; transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; }
         .team-card:hover .team-member-img { transform: scale(1.05); box-shadow: 0 0 15px rgba(251, 146, 60, 0.5); }
         .cart-item-count-badge {
-            background-color: #ef4444; /* red-500 */
+            background-color: #ef4444;
             color: white;
             border-radius: 50%;
             padding: 0.1em 0.4em;
@@ -45,9 +45,45 @@
             right: -10px;
             line-height: 1;
         }
+        #toastNotification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 12px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            opacity: 0;
+            transform: translateY(-30px) scale(0.95);
+            transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+            z-index: 1000;
+            font-size: 0.9rem;
+        }
+        #toastNotification.show { opacity: 1; transform: translateY(0) scale(1); }
+        #toastNotification.success { background-color: #22c55e; color: white; }
+        #toastNotification.error { background-color: #ef4444; color: white; }
+        #toastNotification.info { background-color: #3b82f6; color: white; }
     </style>
     <script type="application/ld+json">
-    { /* ... LD+JSON Anda ... */ }
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Omah Rambak",
+        "url": "https://omah-rambak.great-site.net/about.html",
+        "logo": "https://omah-rambak.great-site.net/assets/images/favicon.ico",
+        "description": "Produsen kerupuk kulit sapi berkualitas dengan resep tradisional. Kenali cerita, visi, dan misi Omah Rambak.",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Kota Anda", 
+            "addressRegion": "Provinsi Anda",
+            "postalCode": "KodePosAnda",
+            "addressCountry": "ID"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+62-812-5273-6904",
+            "contactType": "Customer Service"
+        }
+    }
     </script>
 </head>
 <body class="bg-orange-50 text-gray-800">
@@ -59,7 +95,7 @@
                 <nav class="hidden md:flex md:space-x-2 lg:space-x-4 items-center">
                     <a href="index.html" id="navBeranda" class="nav-link-animate hover:text-orange-200 px-2 py-1 rounded-md">Beranda</a>
                     <a href="catalog.html" id="navKatalog" class="nav-link-animate hover:text-orange-200 px-2 py-1 rounded-md">Katalog</a>
-                    <a href="about.html" id="navTentang" class="nav-link-animate active-link text-orange-200 font-semibold px-2 py-1 rounded-md">Tentang Kami</a>
+                    <a href="about.html" id="navTentang" class="nav-link-animate px-2 py-1 rounded-md">Tentang Kami</a>
                     <a href="cart.html" id="navKeranjang" class="nav-link-animate hover:text-orange-200 px-3 py-1 rounded-md relative">
                         <i class="fas fa-shopping-cart"></i>
                         <span id="cartItemCount" class="cart-item-count-badge hidden">0</span>
@@ -73,7 +109,7 @@
         <div class="md:hidden hidden bg-orange-600" id="mobileMenu">
             <a href="index.html" class="block px-6 py-3 hover:bg-orange-500 hover:text-white transition-colors duration-200">Beranda</a>
             <a href="catalog.html" class="block px-6 py-3 hover:bg-orange-500 hover:text-white transition-colors duration-200">Katalog</a>
-            <a href="about.html" class="block px-6 py-3 text-orange-200 font-semibold hover:bg-orange-500 hover:text-white transition-colors duration-200">Tentang Kami</a>
+            <a href="about.html" class="block px-6 py-3 hover:bg-orange-500 hover:text-white transition-colors duration-200">Tentang Kami</a>
             <a href="cart.html" class="block px-6 py-3 hover:bg-orange-500 hover:text-white transition-colors duration-200 relative">
                 Keranjang <span id="cartItemCountMobile" class="absolute top-1 right-3 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full hidden">0</span>
             </a>
@@ -91,7 +127,7 @@
         <div class="container mx-auto px-4 sm:px-6"> 
             <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
                 <div class="md:w-1/2 animate-on-scroll slide-in-left">
-                    <img src="assets/images/proses-penjemuran-kerupuk-rambak.jpeg" alt="Omah Rambak - Proses Produksi" class="rounded-lg shadow-xl w-full"> 
+                    <img src="assets/images/proses-penjemuran-kerupuk-rambak.jpeg" alt="Proses produksi kerupuk rambak Omah Rambak" class="rounded-lg shadow-xl w-full"> 
                 </div>
                 <div class="md:w-1/2 animate-on-scroll slide-in-right stagger-children">
                     <h2 class="text-2xl sm:text-3xl font-bold text-orange-600 mb-6">Cerita Kami: Dari Resep Keluarga Menuju Jangkauan Nusantara</h2>
@@ -178,24 +214,24 @@
             <h2 class="text-2xl sm:text-3xl font-bold text-center text-orange-700 mb-8 md:mb-12 animate-on-scroll fade-in-up">Tim Kami</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center stagger-children">
                 <div class="bg-white p-4 sm:p-6 rounded-lg shadow-md pop-in team-card">
-                    <img src="https://placehold.co/100x100/FFE5B4/A0522D?text=Pendiri" alt="Foto Pendiri Omah Rambak" class="team-member-img w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32">
+                    <img src="https://placehold.co/120x120/FFE5B4/A0522D?text=Mujiono" alt="Foto Pendiri Omah Rambak - Mujiono" class="team-member-img">
                     <h4 class="text-md sm:text-lg font-semibold text-orange-600">Mujiono</h4>
                     <p class="text-xs sm:text-sm text-gray-500">Pendiri & CEO</p>
                 </div>
                  <div class="bg-white p-4 sm:p-6 rounded-lg shadow-md pop-in team-card">
-                    <img src="https://placehold.co/100x100/FFE5B4/A0522D?text=Produksi" alt="Foto Kepala Produksi Omah Rambak" class="team-member-img w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32">
+                    <img src="https://placehold.co/120x120/FFE5B4/A0522D?text=Edi" alt="Foto Kepala Produksi Omah Rambak - Edi" class="team-member-img">
                     <h4 class="text-md sm:text-lg font-semibold text-orange-600">Edi</h4>
                     <p class="text-xs sm:text-sm text-gray-500">Kepala Produksi</p>
                 </div>
                 <div class="bg-white p-4 sm:p-6 rounded-lg shadow-md pop-in team-card">
-                    <img src="https://placehold.co/100x100/FFE5B4/A0522D?text=Pemasaran" alt="Foto Staf Pemasaran Omah Rambak" class="team-member-img w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32">
+                    <img src="https://placehold.co/120x120/FFE5B4/A0522D?text=Umaroh" alt="Foto Pemasaran Omah Rambak - Umaroh" class="team-member-img">
                     <h4 class="text-md sm:text-lg font-semibold text-orange-600">Umaroh</h4>
                     <p class="text-xs sm:text-sm text-gray-500">Pemasaran & Layanan</p>
                 </div>
                 <div class="bg-white p-4 sm:p-6 rounded-lg shadow-md pop-in team-card">
-                    <img src="https://placehold.co/100x100/FFE5B4/A0522D?text=Logistik" alt="Foto Staf Logistik Omah Rambak" class="team-member-img w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32">
-                    <h4 class="text-md sm:text-lg font-semibold text-orange-600">Kurir</h4>
-                    <p class="text-xs sm:text-sm text-gray-500">Logistik & Pengiriman</p>
+                    <img src="https://placehold.co/120x120/FFE5B4/A0522D?text=Kurir" alt="Tim Logistik Omah Rambak" class="team-member-img">
+                    <h4 class="text-md sm:text-lg font-semibold text-orange-600">Tim Logistik</h4>
+                    <p class="text-xs sm:text-sm text-gray-500">Pengiriman</p>
                 </div>
             </div>
         </div>
@@ -205,43 +241,45 @@
         <div class="container mx-auto px-4 sm:px-6 text-center">
             <p>&copy; 2025 Omah Rambak. Semua Hak Dilindungi.</p>
             <div class="mt-4">
-                <a href="#" class="px-2 hover:text-orange-200" aria-label="Facebook Omah Rambak">Facebook</a>
-                <a href="#" class="px-2 hover:text-orange-200" aria-label="Instagram Omah Rambak">Instagram</a>
-                <a href="https://wa.me/6281252736904" target="_blank" class="px-2 hover:text-orange-200" aria-label="Whatsapp Omah Rambak">Whatsapp</a>
+                <a href="#" class="px-2 hover:text-orange-200" aria-label="Facebook Omah Rambak"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="px-2 hover:text-orange-200" aria-label="Instagram Omah Rambak"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/6283111481327" target="_blank" class="px-2 hover:text-orange-200" aria-label="Whatsapp Omah Rambak"><i class="fab fa-whatsapp"></i></a>
             </div>
         </div>
     </footer>
+    
+    <div id="toastNotification"><span id="toastMessage"></span></div>
 
     <script>
-        // --- Cart Management Functions ---
-        const CART_KEY = 'omahRambakCart';
+        let toastTimeout;
+        function showToast(message, type = 'success', duration = 3000) {
+            const toast = document.getElementById('toastNotification');
+            const toastMessage = document.getElementById('toastMessage');
+            if (!toast || !toastMessage) { console.error("Toast elements not found!"); alert(message); return; }
+            toastMessage.textContent = message;
+            toast.className = 'fixed top-5 right-5 text-white py-3 px-5 rounded-lg shadow-md opacity-0 transform translate-y-[-20px] transition-all duration-300 ease-out z-[1000]';
+            if (type === 'success') toast.classList.add('success');
+            else if (type === 'error') toast.classList.add('error');
+            else if (type === 'info') toast.classList.add('info');
+            else toast.classList.add('success');
+            toast.classList.add('show');
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => { toast.classList.remove('show'); }, duration);
+        }
+
+        const CART_KEY = 'omahRambakCart'; // Hanya untuk updateCartIconCount
         function getCart() { return JSON.parse(localStorage.getItem(CART_KEY)) || []; }
-        function saveCart(cart) { localStorage.setItem(CART_KEY, JSON.stringify(cart)); updateCartIconCount(); }
-        // Note: addToCart is not strictly needed on this page, but keeping for consistency if you add products here later.
         function updateCartIconCount() {
             const cart = getCart();
             const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-            const cartCountElement = document.getElementById('cartItemCount');
-            const cartCountMobileElement = document.getElementById('cartItemCountMobile');
-            
-            if (cartCountElement) {
-                if (totalItems > 0) {
-                    cartCountElement.textContent = totalItems;
-                    cartCountElement.classList.remove('hidden');
-                } else {
-                    cartCountElement.classList.add('hidden');
+            const elementsToUpdate = [document.getElementById('cartItemCount'), document.getElementById('cartItemCountMobile')];
+            elementsToUpdate.forEach(el => {
+                if (el) {
+                    if (totalItems > 0) { el.textContent = totalItems; el.classList.remove('hidden'); } 
+                    else { el.classList.add('hidden'); }
                 }
-            }
-            if (cartCountMobileElement) {
-                 if (totalItems > 0) {
-                    cartCountMobileElement.textContent = totalItems;
-                    cartCountMobileElement.classList.remove('hidden');
-                } else {
-                    cartCountMobileElement.classList.add('hidden');
-                }
-            }
+            });
         }
-        // --- End Cart Management Functions ---
 
         const mobileMenuButton = document.getElementById('mobileMenuButton');
         const mobileMenu = document.getElementById('mobileMenu');
@@ -284,25 +322,16 @@
             observeLoadAnimations(); 
             observeElements('.animate-on-scroll, .stagger-children'); 
             
-            const currentPage = window.location.pathname.split("/").pop();
-            const navLinks = { beranda: 'navBeranda', katalog: 'navKatalog', tentang: 'navTentang', keranjang: 'navKeranjang' };
+            const currentPage = window.location.pathname.split("/").pop() || 'index.html';
+            const navLinks = { 'index.html': 'navBeranda', 'catalog.html': 'navKatalog', 'about.html': 'navTentang', 'cart.html': 'navKeranjang' };
             Object.values(navLinks).forEach(id => {
                 const el = document.getElementById(id);
                 if (el) el.classList.remove('active-link', 'text-orange-200', 'font-semibold');
             });
-
-            if (currentPage === 'about.html') {
-                const el = document.getElementById(navLinks.tentang);
-                if (el) el.classList.add('active-link', 'text-orange-200', 'font-semibold');
-            } else if (currentPage === 'index.html' || currentPage === '') {
-                 const el = document.getElementById(navLinks.beranda);
-                 if (el) el.classList.add('active-link', 'text-orange-200', 'font-semibold');
-            } else if (currentPage === 'catalog.html') {
-                 const el = document.getElementById(navLinks.katalog);
-                 if (el) el.classList.add('active-link', 'text-orange-200', 'font-semibold');
-            } else if (currentPage === 'cart.html') {
-                const el = document.getElementById(navLinks.keranjang);
-                if (el) el.classList.add('active-link', 'text-orange-200', 'font-semibold');
+            const activeNavId = navLinks[currentPage];
+            if (activeNavId) {
+                const activeEl = document.getElementById(activeNavId);
+                if (activeEl) activeEl.classList.add('active-link', 'text-orange-200', 'font-semibold');
             }
         });
     </script>
