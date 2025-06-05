@@ -13,7 +13,6 @@
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon"> 
     <style>
         body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
-        /* === ANIMASI UMUM (dari sebelumnya) === */
         .animate-on-load, .animate-on-scroll { opacity: 0; transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
         .animate-on-load.is-visible, .animate-on-scroll.is-visible { opacity: 1; transform: none !important; }
         .fade-in-up { transform: translateY(40px); }
@@ -35,6 +34,17 @@
         .reason-card:hover .icon-animate .fas { transform: scale(1.2) rotate(-5deg); }
         .team-member-img { width: 120px; height: 120px; object-fit: cover; border-radius: 50%; margin: 0 auto 1rem; border: 3px solid #fb923c; transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; }
         .team-card:hover .team-member-img { transform: scale(1.05); box-shadow: 0 0 15px rgba(251, 146, 60, 0.5); }
+        .cart-item-count-badge {
+            background-color: #ef4444; /* red-500 */
+            color: white;
+            border-radius: 50%;
+            padding: 0.1em 0.4em;
+            font-size: 0.7rem;
+            position: absolute;
+            top: -5px;
+            right: -10px;
+            line-height: 1;
+        }
     </style>
     <script type="application/ld+json">
     { /* ... LD+JSON Anda ... */ }
@@ -50,6 +60,10 @@
                     <a href="index.html" id="navBeranda" class="nav-link-animate hover:text-orange-200 px-2 py-1 rounded-md">Beranda</a>
                     <a href="catalog.html" id="navKatalog" class="nav-link-animate hover:text-orange-200 px-2 py-1 rounded-md">Katalog</a>
                     <a href="about.html" id="navTentang" class="nav-link-animate active-link text-orange-200 font-semibold px-2 py-1 rounded-md">Tentang Kami</a>
+                    <a href="cart.html" id="navKeranjang" class="nav-link-animate hover:text-orange-200 px-3 py-1 rounded-md relative">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span id="cartItemCount" class="cart-item-count-badge hidden">0</span>
+                    </a>
                 </nav>
                 <button class="md:hidden text-white focus:outline-none button-click-effect ml-4" id="mobileMenuButton">
                     <i class="fas fa-bars text-xl"></i>
@@ -60,6 +74,9 @@
             <a href="index.html" class="block px-6 py-3 hover:bg-orange-500 hover:text-white transition-colors duration-200">Beranda</a>
             <a href="catalog.html" class="block px-6 py-3 hover:bg-orange-500 hover:text-white transition-colors duration-200">Katalog</a>
             <a href="about.html" class="block px-6 py-3 text-orange-200 font-semibold hover:bg-orange-500 hover:text-white transition-colors duration-200">Tentang Kami</a>
+            <a href="cart.html" class="block px-6 py-3 hover:bg-orange-500 hover:text-white transition-colors duration-200 relative">
+                Keranjang <span id="cartItemCountMobile" class="absolute top-1 right-3 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full hidden">0</span>
+            </a>
         </div>
     </header>
 
@@ -196,7 +213,36 @@
     </footer>
 
     <script>
-        // ... JavaScript about.html Anda (tidak berubah dari versi animasi terakhir, hanya pastikan logika nav aktif sudah benar) ...
+        // --- Cart Management Functions ---
+        const CART_KEY = 'omahRambakCart';
+        function getCart() { return JSON.parse(localStorage.getItem(CART_KEY)) || []; }
+        function saveCart(cart) { localStorage.setItem(CART_KEY, JSON.stringify(cart)); updateCartIconCount(); }
+        // Note: addToCart is not strictly needed on this page, but keeping for consistency if you add products here later.
+        function updateCartIconCount() {
+            const cart = getCart();
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const cartCountElement = document.getElementById('cartItemCount');
+            const cartCountMobileElement = document.getElementById('cartItemCountMobile');
+            
+            if (cartCountElement) {
+                if (totalItems > 0) {
+                    cartCountElement.textContent = totalItems;
+                    cartCountElement.classList.remove('hidden');
+                } else {
+                    cartCountElement.classList.add('hidden');
+                }
+            }
+            if (cartCountMobileElement) {
+                 if (totalItems > 0) {
+                    cartCountMobileElement.textContent = totalItems;
+                    cartCountMobileElement.classList.remove('hidden');
+                } else {
+                    cartCountMobileElement.classList.add('hidden');
+                }
+            }
+        }
+        // --- End Cart Management Functions ---
+
         const mobileMenuButton = document.getElementById('mobileMenuButton');
         const mobileMenu = document.getElementById('mobileMenu');
         if (mobileMenuButton && mobileMenu) {
@@ -212,7 +258,7 @@
                         const children = Array.from(entry.target.children);
                         children.forEach((child, index) => {
                             if (!child.style.transitionDelay) child.style.transitionDelay = `${index * 0.12}s`;
-                            if (child.classList.contains('pop-in') || child.classList.contains('animate-on-scroll') || child.classList.contains('fade-in-up')) { // Tambahkan fade-in-up
+                            if (child.classList.contains('pop-in') || child.classList.contains('animate-on-scroll') || child.classList.contains('fade-in-up')) {
                                 child.classList.add('is-visible');
                             }
                         });
@@ -234,19 +280,29 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
+            updateCartIconCount();
             observeLoadAnimations(); 
             observeElements('.animate-on-scroll, .stagger-children'); 
             
             const currentPage = window.location.pathname.split("/").pop();
-            const navLinks = { beranda: 'navBeranda', katalog: 'navKatalog', tentang: 'navTentang' };
-            Object.values(navLinks).forEach(id => document.getElementById(id)?.classList.remove('active-link', 'text-orange-200', 'font-semibold'));
+            const navLinks = { beranda: 'navBeranda', katalog: 'navKatalog', tentang: 'navTentang', keranjang: 'navKeranjang' };
+            Object.values(navLinks).forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.classList.remove('active-link', 'text-orange-200', 'font-semibold');
+            });
 
             if (currentPage === 'about.html') {
-                document.getElementById(navLinks.tentang)?.classList.add('active-link', 'text-orange-200', 'font-semibold');
+                const el = document.getElementById(navLinks.tentang);
+                if (el) el.classList.add('active-link', 'text-orange-200', 'font-semibold');
             } else if (currentPage === 'index.html' || currentPage === '') {
-                 document.getElementById(navLinks.beranda)?.classList.add('active-link', 'text-orange-200', 'font-semibold');
+                 const el = document.getElementById(navLinks.beranda);
+                 if (el) el.classList.add('active-link', 'text-orange-200', 'font-semibold');
             } else if (currentPage === 'catalog.html') {
-                 document.getElementById(navLinks.katalog)?.classList.add('active-link', 'text-orange-200', 'font-semibold');
+                 const el = document.getElementById(navLinks.katalog);
+                 if (el) el.classList.add('active-link', 'text-orange-200', 'font-semibold');
+            } else if (currentPage === 'cart.html') {
+                const el = document.getElementById(navLinks.keranjang);
+                if (el) el.classList.add('active-link', 'text-orange-200', 'font-semibold');
             }
         });
     </script>

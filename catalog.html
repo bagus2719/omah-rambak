@@ -13,7 +13,6 @@
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon"> 
     <style>
         body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
-        /* === ANIMASI UMUM (dari sebelumnya) === */
         .animate-on-load { opacity: 0; }
         .animate-on-scroll { opacity: 0; transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
         .animate-on-load.is-visible, .animate-on-scroll.is-visible { opacity: 1; transform: none; }
@@ -36,6 +35,17 @@
         .product-card-hover:hover { transform: translateY(-5px) scale(1.03); box-shadow: 0 10px 20px rgba(0,0,0,0.1), 0 6px 6px rgba(0,0,0,0.1); }
         #productCountDisplay.count-updated { animation: quickFade 0.5s ease-out; }
         @keyframes quickFade { 0% { opacity: 0.5; } 50% { opacity: 1; font-weight: bold;} 100% { opacity: 1; font-weight: normal;} }
+        .cart-item-count-badge {
+            background-color: #ef4444; /* red-500 */
+            color: white;
+            border-radius: 50%;
+            padding: 0.1em 0.4em;
+            font-size: 0.7rem;
+            position: absolute;
+            top: -5px;
+            right: -10px;
+            line-height: 1;
+        }
     </style>
 </head>
 <body class="bg-orange-50 text-gray-800">
@@ -48,6 +58,10 @@
                     <a href="index.html" id="navBeranda" class="nav-link-animate hover:text-orange-200 px-2 py-1 rounded-md">Beranda</a>
                     <a href="catalog.html" id="navKatalog" class="nav-link-animate active-link text-orange-200 font-semibold px-2 py-1 rounded-md">Katalog</a>
                     <a href="about.html" id="navTentang" class="nav-link-animate hover:text-orange-200 px-2 py-1 rounded-md">Tentang Kami</a>
+                    <a href="cart.html" id="navKeranjang" class="nav-link-animate hover:text-orange-200 px-3 py-1 rounded-md relative">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span id="cartItemCount" class="cart-item-count-badge hidden">0</span>
+                    </a>
                 </nav>
                 <button class="md:hidden text-white focus:outline-none button-click-effect ml-4" id="mobileMenuButton">
                     <i class="fas fa-bars text-xl"></i>
@@ -58,6 +72,9 @@
             <a href="index.html" class="block px-6 py-3 hover:bg-orange-500 hover:text-white transition-colors duration-200">Beranda</a>
             <a href="catalog.html" class="block px-6 py-3 text-orange-200 font-semibold hover:bg-orange-500 hover:text-white transition-colors duration-200">Katalog</a>
             <a href="about.html" class="block px-6 py-3 hover:bg-orange-500 hover:text-white transition-colors duration-200">Tentang Kami</a>
+            <a href="cart.html" class="block px-6 py-3 hover:bg-orange-500 hover:text-white transition-colors duration-200 relative">
+                Keranjang <span id="cartItemCountMobile" class="absolute top-1 right-3 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full hidden">0</span>
+            </a>
         </div>
     </header>
 
@@ -142,6 +159,47 @@
     </footer>
 
     <script>
+        // --- Cart Management Functions ---
+        const CART_KEY = 'omahRambakCart';
+        function getCart() { return JSON.parse(localStorage.getItem(CART_KEY)) || []; }
+        function saveCart(cart) { localStorage.setItem(CART_KEY, JSON.stringify(cart)); updateCartIconCount(); }
+        function addToCart(productId, productName, productPrice, productImage) {
+            let cart = getCart();
+            const price = parseInt(productPrice.replace(/\./g, ''));
+            const existingItemIndex = cart.findIndex(item => item.id === productId);
+            if (existingItemIndex > -1) {
+                cart[existingItemIndex].quantity += 1;
+            } else {
+                cart.push({ id: productId, name: productName, price: price, image: productImage, quantity: 1 });
+            }
+            saveCart(cart);
+            alert(`"${productName}" telah ditambahkan ke keranjang!`);
+        }
+        function updateCartIconCount() {
+            const cart = getCart();
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const cartCountElement = document.getElementById('cartItemCount');
+            const cartCountMobileElement = document.getElementById('cartItemCountMobile'); 
+            
+            if (cartCountElement) {
+                if (totalItems > 0) {
+                    cartCountElement.textContent = totalItems;
+                    cartCountElement.classList.remove('hidden');
+                } else {
+                    cartCountElement.classList.add('hidden');
+                }
+            }
+             if (cartCountMobileElement) {
+                 if (totalItems > 0) {
+                    cartCountMobileElement.textContent = totalItems;
+                    cartCountMobileElement.classList.remove('hidden');
+                } else {
+                    cartCountMobileElement.classList.add('hidden');
+                }
+            }
+        }
+        // --- End Cart Management Functions ---
+
         const mobileMenuButton = document.getElementById('mobileMenuButton');
         const mobileMenu = document.getElementById('mobileMenu');
         if (mobileMenuButton && mobileMenu) {
@@ -174,6 +232,7 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
+            updateCartIconCount(); 
             observeLoadAnimations();
             loadProducts();
 
@@ -196,15 +255,24 @@
             });
 
             const currentPage = window.location.pathname.split("/").pop();
-            const navLinks = { beranda: 'navBeranda', katalog: 'navKatalog', tentang: 'navTentang' };
-            Object.values(navLinks).forEach(id => document.getElementById(id)?.classList.remove('active-link', 'text-orange-200', 'font-semibold'));
+            const navLinks = { beranda: 'navBeranda', katalog: 'navKatalog', tentang: 'navTentang', keranjang: 'navKeranjang' };
+            Object.values(navLinks).forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.classList.remove('active-link', 'text-orange-200', 'font-semibold');
+            });
             
             if (currentPage === 'catalog.html') {
-                document.getElementById(navLinks.katalog)?.classList.add('active-link', 'text-orange-200', 'font-semibold');
+                const el = document.getElementById(navLinks.katalog);
+                if (el) el.classList.add('active-link', 'text-orange-200', 'font-semibold');
             } else if (currentPage === 'index.html' || currentPage === '') {
-                 document.getElementById(navLinks.beranda)?.classList.add('active-link', 'text-orange-200', 'font-semibold');
+                 const el = document.getElementById(navLinks.beranda);
+                 if (el) el.classList.add('active-link', 'text-orange-200', 'font-semibold');
             } else if (currentPage === 'about.html') {
-                 document.getElementById(navLinks.tentang)?.classList.add('active-link', 'text-orange-200', 'font-semibold');
+                 const el = document.getElementById(navLinks.tentang);
+                  if (el) el.classList.add('active-link', 'text-orange-200', 'font-semibold');
+            } else if (currentPage === 'cart.html') {
+                const el = document.getElementById(navLinks.keranjang);
+                 if (el) el.classList.add('active-link', 'text-orange-200', 'font-semibold');
             }
         });
 
@@ -246,11 +314,10 @@
                                 <h3 class="text-base sm:text-lg md:text-xl font-semibold mb-2 text-orange-600"><a href="#${product.id}" class="hover:underline">${product.name}</a></h3>
                                 <p class="text-xs sm:text-sm text-gray-600 mb-3 flex-grow">${product.description}</p>
                                 <p class="text-sm sm:text-base md:text-lg font-bold text-orange-500 mb-4">Rp ${product.price}</p>
-                                <button onclick="orderViaWhatsApp('${product.name}', '${product.price}')" class="mt-auto w-full bg-green-500 hover:bg-green-700 text-white font-semibold py-2 px-3 sm:px-4 rounded-lg transition duration-300 flex items-center justify-center text-xs sm:text-sm button-click-effect"><i class="fab fa-whatsapp mr-2"></i> Pesan via WhatsApp</button>
+                                <button onclick="addToCart('${product.id}', '${product.name}', '${product.price}', '${product.image}')" class="mt-auto w-full bg-orange-500 hover:bg-orange-700 text-white font-semibold py-2 px-3 sm:px-4 rounded-lg transition duration-300 flex items-center justify-center text-xs sm:text-sm button-click-effect"><i class="fas fa-cart-plus mr-2"></i> Tambah ke Keranjang</button>
                             </div>
                         </div>`;
                     productContainer.insertAdjacentHTML('beforeend', productCardHTML);
-                    // Schema.org Product
                     const productSchema = {
                       "@context": "https://schema.org", "@type": "Product", "name": product.name,
                       "image": `${domain}/${product.image.startsWith('assets/') ? product.image : 'assets/images/' + product.image}`,
@@ -267,7 +334,7 @@
             injectPageSchema(); 
         }
         
-        function updateProductCount(displayedCount) { /* ... implementasi Anda ... */ 
+        function updateProductCount(displayedCount) { 
             if (productCountDisplay) {
                  if (allProducts.length === 0 && displayedCount === 0 && productContainer.querySelector('.loading-spinner')) { 
                     productCountDisplay.innerHTML = 'Memuat jumlah produk...';
@@ -279,7 +346,7 @@
             }
         }
 
-        function resetFilters() { /* ... implementasi Anda ... */ 
+        function resetFilters() { 
             document.querySelectorAll('.filter-checkbox').forEach(checkbox => checkbox.checked = false);
             if (priceRangeInput) {
                 priceRangeInput.value = priceRangeInput.max; 
@@ -289,7 +356,7 @@
             applyFiltersAndSort();
         }
 
-        function applyFiltersAndSort() { /* ... implementasi Anda ... */ 
+        function applyFiltersAndSort() { 
             if (!allProducts) { console.warn("Data produk belum dimuat."); if (productCountDisplay) productCountDisplay.textContent = 'Data produk tidak tersedia.'; return; }
             if (allProducts.length === 0 && productContainer.innerHTML.includes('Gagal memuat produk')) return; 
             setLoadingState(true);
@@ -311,13 +378,6 @@
                 }
                 displayProducts(filteredProducts);
             }, 100);
-        }
-
-        function orderViaWhatsApp(productName, productPrice) {
-            const phoneNumber = "6281252736904"; 
-            const message = `Halo Omah Rambak,\n\nSaya tertarik untuk memesan produk berikut:\nNama Produk: ${productName}\nHarga: Rp ${productPrice}\n\nApakah produk ini masih tersedia dan bagaimana cara pemesanannya?\n\nTerima kasih.`;
-            const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-            window.open(whatsappURL, '_blank');
         }
 
         function injectPageSchema() {
