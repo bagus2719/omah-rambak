@@ -1,0 +1,16 @@
+{
+  "name": "Omah Rambak - Kerupuk Kulit Sapi Asli",
+  "short_name": "Omah Rambak",
+  "description": "Jual kerupuk kulit sapi asli berkualitas, matang renyah dan mentah siap goreng.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#fffaf5",
+  "theme_color": "#ea580c",
+  "icons": [
+    {
+      "src": "assets/images/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

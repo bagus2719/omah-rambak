@@ -3,433 +3,315 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Katalog Produk Kerupuk Kulit Sapi Lengkap - Omah Rambak</title>
-    <meta name="description" content="Lihat dan pilih berbagai produk kerupuk kulit sapi dari Omah Rambak. Tersedia kerupuk matang, mentah, kiloan, dan eceran. Kualitas terjamin!">
-    <meta name="keywords" content="katalog omah rambak, daftar harga kerupuk kulit, beli kerupuk kulit sapi, kerupuk sapi matang, kerupuk sapi mentah, harga rambak sapi">
     
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon"> 
-    <style>
-        body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
-        .animate-on-load { opacity: 0; }
-        .animate-on-scroll { opacity: 0; transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
-        .animate-on-load.is-visible, .animate-on-scroll.is-visible { opacity: 1; transform: none; }
-        .fade-in-down { transform: translateY(-30px); }
-        .slide-in-left { transform: translateX(-50px); }
-        .slide-in-right { transform: translateX(50px); }
-        .button-click-effect { transition: transform 0.1s ease-out, box-shadow 0.1s ease-out; }
-        .button-click-effect:active { transform: scale(0.95); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-        .nav-link-animate { position: relative; padding-bottom: 4px; }
-        .nav-link-animate::after { content: ''; position: absolute; left: 0; bottom: 0; width: 0; height: 2px; background-color: #fbbf24; transition: width 0.3s ease-out; }
-        .nav-link-animate:hover::after, .nav-link-animate.active-link::after { width: 100%; }
-        #navKatalog.active-link { color: #fcd34d; }
-        .loading-spinner-container { display: flex; justify-content: center; align-items: center; min-height: 150px; }
-        .loading-spinner { border: 4px solid rgba(234, 88, 12, 0.1); border-left-color: #ea580c; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; }
-        @keyframes spin { to { transform: rotate(360deg); } }
-        .filter-item-hover label:hover, .filter-item-hover input[type="checkbox"]:hover + span { color: #f97316; }
-        #priceRangeValue.updated { color: #ea580c; font-weight: 600; }
-        .product-card { opacity: 0; transform: translateY(20px); transition: opacity 0.4s ease-out, transform 0.4s ease-out; }
-        .product-card.is-visible { opacity: 1; transform: translateY(0); }
-        .product-card-hover:hover { transform: translateY(-5px) scale(1.03); box-shadow: 0 10px 20px rgba(0,0,0,0.1), 0 6px 6px rgba(0,0,0,0.1); }
-        #productCountDisplay.count-updated { animation: quickFade 0.5s ease-out; }
-        @keyframes quickFade { 0% { opacity: 0.5; } 50% { opacity: 1; font-weight: bold;} 100% { opacity: 1; font-weight: normal;} }
-        .cart-item-count-badge {
-            background-color: #ef4444;
-            color: white;
-            border-radius: 50%;
-            padding: 0.1em 0.4em;
-            font-size: 0.7rem;
-            position: absolute;
-            top: -5px;
-            right: -10px;
-            line-height: 1;
-        }
-        #toastNotification {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translate(-50%, -30px) scale(0.95);
-            padding: 12px 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            opacity: 0;
-            transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-            z-index: 1000;
-            font-size: 0.9rem;
-            max-width: 90%; 
-            text-align: center; 
-        }
-        #toastNotification.show {
-            opacity: 1;
-            transform: translate(-50%, 0) scale(1);
-        }
-        #toastNotification.success { background-color: #22c55e; color: white; }
-        #toastNotification.error { background-color: #ef4444; color: white; }
-        #toastNotification.info { background-color: #3b82f6; color: white; }
-    </style>
-</head>
-<body class="bg-orange-50 text-gray-800">
+    <!-- Primary SEO Meta Tags -->
+    <title>Katalog Produk Kerupuk Kulit Sapi Asli Lengkap - Omah Rambak</title>
+    <meta name="title" content="Katalog Produk Kerupuk Kulit Sapi Asli Lengkap - Omah Rambak">
+    <meta name="description" content="Katalog lengkap kerupuk kulit sapi asli dari Omah Rambak. Tersedia varian matang siap santap, mentah siap goreng, ukuran kiloan (1/4 kg, 1/2 kg, 1 kg) dan kemasan eceran praktis.">
+    <meta name="keywords" content="katalog kerupuk kulit, harga rambak sapi, kerupuk kulit sapi mentah, kerupuk kulit matang, rambak kiloan, beli kerupuk sapi asli, omah rambak katalog">
+    <meta name="author" content="Omah Rambak">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#ea580c">
+    <link rel="canonical" href="https://omah-rambak.great-site.net/catalog.html">
 
-    <header class="bg-orange-600 text-white shadow-md sticky top-0 z-50">
-        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <a href="index.html" class="text-2xl font-bold">Omah Rambak</a>
-            <div class="flex items-center">
-                <nav class="hidden md:flex md:space-x-2 lg:space-x-4 items-center">
-                    <a href="index.html" id="navBeranda" class="nav-link-animate hover:text-orange-200 px-2 py-1 rounded-md">Beranda</a>
-                    <a href="catalog.html" id="navKatalog" class="nav-link-animate px-2 py-1 rounded-md">Katalog</a>
-                    <a href="about.html" id="navTentang" class="nav-link-animate hover:text-orange-200 px-2 py-1 rounded-md">Tentang Kami</a>
-                    <a href="cart.html" id="navKeranjang" class="nav-link-animate hover:text-orange-200 px-3 py-1 rounded-md relative">
-                        <i class="fas fa-shopping-cart"></i>
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://omah-rambak.great-site.net/catalog.html">
+    <meta property="og:title" content="Katalog Aneka Kerupuk Kulit Sapi - Omah Rambak">
+    <meta property="og:description" content="Pilih varian kerupuk kulit sapi terbaik sesuai kebutuhanmu: matang gurih atau mentah siap goreng. Pesan kiloan & eceran langsung di Omah Rambak.">
+    <meta property="og:image" content="https://omah-rambak.great-site.net/assets/images/kerupuk-rambak-matang.jpeg">
+    <meta property="og:site_name" content="Omah Rambak">
+    <meta property="og:locale" content="id_ID">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://omah-rambak.great-site.net/catalog.html">
+    <meta name="twitter:title" content="Katalog Kerupuk Rambak Sapi - Omah Rambak">
+    <meta name="twitter:description" content="Daftar harga dan produk kerupuk kulit sapi terlengkap dari Omah Rambak.">
+    <meta name="twitter:image" content="https://omah-rambak.great-site.net/assets/images/kerupuk-rambak-matang.jpeg">
+
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+    <link rel="alternate icon" href="assets/images/favicon.ico" type="image/x-icon">
+
+    <!-- External Assets: Tailwind CSS, Google Fonts, Font Awesome -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Modular Stylesheet -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- Structured Data BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Beranda",
+                "item": "https://omah-rambak.great-site.net/index.html"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Katalog Produk",
+                "item": "https://omah-rambak.great-site.net/catalog.html"
+            }
+        ]
+    }
+    </script>
+</head>
+<body class="bg-orange-50/40 text-gray-800 flex flex-col min-h-screen">
+
+    <!-- Header & Navigation -->
+    <header class="header-nav bg-orange-600/95 text-white shadow-md sticky top-0 z-50 transition duration-300">
+        <div class="container mx-auto px-4 sm:px-6 py-3.5 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2 text-2xl font-black tracking-tight hover:opacity-95 transition" aria-label="Beranda Omah Rambak">
+                <i class="fas fa-cookie-bite text-amber-300 text-2xl"></i>
+                <span>Omah <span class="text-amber-300">Rambak</span></span>
+            </a>
+            
+            <div class="flex items-center space-x-1 sm:space-x-3">
+                <nav class="hidden md:flex items-center space-x-1 lg:space-x-2" aria-label="Navigasi Utama">
+                    <a href="index.html" id="navBeranda" class="nav-link-animate px-3 py-1.5 rounded-lg text-white hover:text-amber-200 transition">Beranda</a>
+                    <a href="catalog.html" id="navKatalog" class="nav-link-animate px-3 py-1.5 rounded-lg text-white hover:text-amber-200 transition">Katalog Produk</a>
+                    <a href="about.html" id="navTentang" class="nav-link-animate px-3 py-1.5 rounded-lg text-white hover:text-amber-200 transition">Tentang Kami</a>
+                    <a href="cart.html" id="navKeranjang" class="nav-link-animate px-3.5 py-1.5 rounded-lg text-white hover:text-amber-200 transition relative flex items-center" aria-label="Keranjang Belanja">
+                        <i class="fas fa-shopping-cart text-lg mr-1"></i>
+                        <span>Keranjang</span>
                         <span id="cartItemCount" class="cart-item-count-badge hidden">0</span>
                     </a>
                 </nav>
-                <button class="md:hidden text-white focus:outline-none button-click-effect ml-4" id="mobileMenuButton">
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuButton" class="md:hidden text-white focus:outline-none p-2 rounded-lg hover:bg-orange-700 transition" aria-label="Buka menu navigasi">
                     <i class="fas fa-bars text-xl"></i>
                 </button>
             </div>
         </div>
-        <div class="md:hidden hidden bg-orange-600" id="mobileMenu">
-            <a href="index.html" class="block px-6 py-3 hover:bg-orange-500 hover:text-white transition-colors duration-200">Beranda</a>
-            <a href="catalog.html" class="block px-6 py-3 hover:bg-orange-500 hover:text-white transition-colors duration-200">Katalog</a>
-            <a href="about.html" class="block px-6 py-3 hover:bg-orange-500 hover:text-white transition-colors duration-200">Tentang Kami</a>
-            <a href="cart.html" class="block px-6 py-3 hover:bg-orange-500 hover:text-white transition-colors duration-200 relative">
-                Keranjang <span id="cartItemCountMobile" class="absolute top-1 right-3 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full hidden">0</span>
+
+        <!-- Mobile Drawer Menu -->
+        <nav id="mobileMenu" class="md:hidden hidden bg-orange-700/98 border-t border-orange-500/50 shadow-inner px-4 py-3 space-y-1.5" aria-label="Navigasi Mobile">
+            <a href="index.html" class="block px-4 py-2.5 rounded-lg hover:bg-orange-600 font-medium transition">
+                <i class="fas fa-home w-6 text-amber-300"></i> Beranda
             </a>
-        </div>
+            <a href="catalog.html" class="block px-4 py-2.5 rounded-lg hover:bg-orange-600 font-medium transition">
+                <i class="fas fa-box-open w-6 text-amber-300"></i> Katalog Produk
+            </a>
+            <a href="about.html" class="block px-4 py-2.5 rounded-lg hover:bg-orange-600 font-medium transition">
+                <i class="fas fa-info-circle w-6 text-amber-300"></i> Tentang Kami
+            </a>
+            <a href="cart.html" class="block px-4 py-2.5 rounded-lg hover:bg-orange-600 font-medium transition flex items-center justify-between">
+                <div>
+                    <i class="fas fa-shopping-cart w-6 text-amber-300"></i> Keranjang Belanja
+                </div>
+                <span id="cartItemCountMobile" class="cart-item-count-badge relative top-0 right-0 hidden">0</span>
+            </a>
+        </nav>
     </header>
 
-    <section class="bg-orange-100 py-12 animate-on-load fade-in-down">
+    <!-- Page Header & Breadcrumb -->
+    <section class="bg-gradient-to-r from-orange-600 via-orange-500 to-amber-600 text-white py-10 sm:py-14 animate-on-load fade-in-down">
         <div class="container mx-auto px-4 sm:px-6 text-center">
-            <h1 class="text-3xl sm:text-4xl font-bold text-orange-700">Katalog Produk Rambak</h1>
-            <p class="text-base sm:text-lg text-gray-600 mt-2">Temukan aneka kerupuk kulit sapi favoritmu di sini!</p>
+            <!-- Breadcrumbs -->
+            <nav class="flex justify-center mb-3 text-xs sm:text-sm text-orange-200" aria-label="Breadcrumb">
+                <ol class="inline-flex items-center space-x-1 md:space-x-2">
+                    <li><a href="index.html" class="hover:text-white transition">Beranda</a></li>
+                    <li><span class="mx-1">/</span></li>
+                    <li class="text-white font-medium">Katalog</li>
+                </ol>
+            </nav>
+            <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Katalog Produk Kerupuk Rambak</h1>
+            <p class="text-sm sm:text-base text-orange-100 mt-2 max-w-xl mx-auto">
+                Pilih kerupuk kulit sapi asli berkualitas premium sesuai selera dan kebutuhan Anda.
+            </p>
         </div>
     </section>
 
-    <section class="py-12 md:py-16">
-        <div class="container mx-auto px-4 sm:px-6">
-            <div class="flex flex-col md:flex-row gap-8">
-                <aside class="w-full md:w-1/4 lg:w-1/5 animate-on-load slide-in-left" style="animation-delay: 0.2s;">
-                    <div class="bg-white p-4 sm:p-6 rounded-lg shadow-md sticky top-24">
-                        <h3 class="text-lg sm:text-xl font-semibold text-orange-600 mb-4">Filter Produk</h3>
-                        <div class="mb-6 filter-item-hover">
-                            <h4 class="font-medium text-gray-700 mb-2 text-sm sm:text-base">Jenis Kerupuk</h4>
-                            <label class="flex items-center space-x-2 text-gray-600 hover:text-orange-500 cursor-pointer py-1 text-sm sm:text-base">
-                                <input type="checkbox" name="categoryFilter" value="matang" class="form-checkbox rounded text-orange-500 focus:ring-orange-400 filter-checkbox">
-                                <span>Matang (Kiloan)</span>
-                            </label>
-                            <label class="flex items-center space-x-2 text-gray-600 hover:text-orange-500 mt-1 cursor-pointer py-1 text-sm sm:text-base">
-                                <input type="checkbox" name="categoryFilter" value="mentah" class="form-checkbox rounded text-orange-500 focus:ring-orange-400 filter-checkbox">
-                                <span>Mentah (Kiloan)</span>
-                            </label>
-                             <label class="flex items-center space-x-2 text-gray-600 hover:text-orange-500 mt-1 cursor-pointer py-1 text-sm sm:text-base">
-                                <input type="checkbox" name="categoryFilter" value="eceran" class="form-checkbox rounded text-orange-500 focus:ring-orange-400 filter-checkbox">
-                                <span>Eceran Matang (per 5 pcs)</span>
-                            </label>
-                        </div>
-                        <div>
-                            <h4 class="font-medium text-gray-700 mb-2 text-sm sm:text-base">Rentang Harga (Max)</h4>
-                            <input type="range" id="priceRange" min="0" max="150000" step="5000" value="150000" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-orange-500">
-                            <div class="flex justify-between text-xs sm:text-sm text-gray-500 mt-1">
-                                <span>Rp 0</span>
-                                <span id="priceRangeValue">Rp 150rb</span>
-                            </div>
-                        </div>
-                         <button id="applyFilterButton" class="mt-6 w-full bg-orange-500 hover:bg-orange-700 text-white font-semibold py-2 px-3 sm:px-4 rounded-lg transition duration-300 button-click-effect hover:shadow-md text-sm sm:text-base">
-                            Terapkan Filter
-                        </button>
-                         <button id="resetFilterButton" class="mt-3 w-full bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold py-2 px-3 sm:px-4 rounded-lg transition duration-300 button-click-effect hover:shadow-sm text-sm sm:text-base">
-                            Reset Filter
-                        </button>
-                    </div>
-                </aside>
+    <!-- Main Catalog Section -->
+    <main class="container mx-auto px-4 sm:px-6 py-8 sm:py-12 flex-grow">
+        
+        <!-- Live Search & Quick Filter Pills Bar -->
+        <div class="bg-white p-4 sm:p-5 rounded-2xl shadow-sm border border-orange-100 mb-8 animate-on-load fade-in-up">
+            <div class="flex flex-col md:flex-row gap-4 items-center justify-between">
+                <!-- Live Search Input -->
+                <div class="relative w-full md:w-80">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-gray-400">
+                        <i class="fas fa-search"></i>
+                    </span>
+                    <input type="text" id="searchProductInput" placeholder="Cari kerupuk (matang, 1 kg...)" 
+                           class="w-full pl-10 pr-9 py-2.5 bg-orange-50/50 rounded-xl border border-orange-200 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:bg-white transition"
+                           aria-label="Cari produk kerupuk rambak">
+                    <button type="button" id="clearSearchButton" class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400 hover:text-gray-600 hidden" aria-label="Hapus pencarian">
+                        <i class="fas fa-times-circle"></i>
+                    </button>
+                </div>
 
-                <main class="w-full md:w-3/4 lg:w-4/5 animate-on-load slide-in-right" style="animation-delay: 0.4s;">
-                    <div class="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
-                        <p id="productCountDisplay" class="text-gray-600 text-sm sm:text-base">Memuat jumlah produk...</p>
-                        <div class="flex items-center">
-                            <label for="sort" class="text-gray-600 mr-2 text-sm sm:text-base whitespace-nowrap">Urutkan:</label>
-                            <select id="sort" name="sort" class="border border-gray-300 rounded-md p-2 focus:ring-orange-500 focus:border-orange-500 text-sm sm:text-base w-full sm:w-auto">
-                                <option value="default">Relevansi</option>
-                                <option value="id-desc">Terbaru</option>
-                                <option value="harga-asc">Harga: Rendah ke Tinggi</option>
-                                <option value="harga-desc">Harga: Tinggi ke Rendah</option>
-                                <option value="nama-asc">Nama: A-Z</option>
-                                <option value="nama-desc">Nama: Z-A</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                         <div class="col-span-full loading-spinner-container"><div class="loading-spinner"></div></div>
-                         <p class="col-span-full text-center text-gray-500 -mt-8">Memuat produk...</p>
-                    </div>
-                </main>
+                <!-- Quick Filter Chips -->
+                <div class="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-1 sm:pb-0" aria-label="Filter cepat kategori">
+                    <button type="button" class="filter-chip active" data-category="all">Semua</button>
+                    <button type="button" class="filter-chip" data-category="matang">Matang (Kiloan)</button>
+                    <button type="button" class="filter-chip" data-category="mentah">Mentah (Siap Goreng)</button>
+                    <button type="button" class="filter-chip" data-category="eceran">Eceran Praktis</button>
+                </div>
             </div>
         </div>
-    </section>
 
-    <footer class="bg-orange-700 text-white py-8 mt-auto">
-        <div class="container mx-auto px-4 sm:px-6 text-center">
-            <p>&copy; 2025 Omah Rambak. Semua Hak Dilindungi.</p>
-            <div class="mt-4">
-                <a href="#" class="px-2 hover:text-orange-200" aria-label="Facebook Omah Rambak"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="px-2 hover:text-orange-200" aria-label="Instagram Omah Rambak"><i class="fab fa-instagram"></i></a>
-                <a href="https://wa.me/6283111481327" target="_blank" class="px-2 hover:text-orange-200" aria-label="Whatsapp Omah Rambak"><i class="fab fa-whatsapp"></i></a>
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- Sidebar Filter -->
+            <aside class="w-full lg:w-1/4 animate-on-load slide-in-left">
+                <div class="bg-white p-5 sm:p-6 rounded-2xl shadow-sm border border-orange-100 lg:sticky lg:top-24">
+                    <div class="flex items-center justify-between mb-5 pb-3 border-b border-gray-100">
+                        <h2 class="text-base font-bold text-gray-900 flex items-center">
+                            <i class="fas fa-filter text-orange-500 mr-2"></i> Filter Produk
+                        </h2>
+                        <button type="button" id="resetFilterButton" class="text-xs text-orange-600 hover:text-orange-700 font-semibold transition" title="Kembalikan filter ke semula">
+                            Reset
+                        </button>
+                    </div>
+
+                    <!-- Filter Kategori Checkbox -->
+                    <div class="mb-6">
+                        <h3 class="font-semibold text-gray-800 mb-3 text-sm">Varian Kerupuk</h3>
+                        <div class="space-y-2.5 text-sm">
+                            <label class="flex items-center space-x-3 text-gray-700 hover:text-orange-600 cursor-pointer select-none">
+                                <input type="checkbox" name="categoryFilter" value="matang" class="w-4 h-4 rounded text-orange-600 border-gray-300 focus:ring-orange-500 filter-checkbox">
+                                <span>Matang (Kiloan)</span>
+                            </label>
+                            <label class="flex items-center space-x-3 text-gray-700 hover:text-orange-600 cursor-pointer select-none">
+                                <input type="checkbox" name="categoryFilter" value="mentah" class="w-4 h-4 rounded text-orange-600 border-gray-300 focus:ring-orange-500 filter-checkbox">
+                                <span>Mentah (Siap Goreng)</span>
+                            </label>
+                            <label class="flex items-center space-x-3 text-gray-700 hover:text-orange-600 cursor-pointer select-none">
+                                <input type="checkbox" name="categoryFilter" value="eceran" class="w-4 h-4 rounded text-orange-600 border-gray-300 focus:ring-orange-500 filter-checkbox">
+                                <span>Eceran (Isi 5 pcs)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Filter Rentang Harga -->
+                    <div class="mb-6 pt-4 border-t border-gray-100">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="font-semibold text-gray-800 text-sm">Maksimal Harga</h3>
+                            <span id="priceRangeValue" class="text-xs font-bold text-orange-600 bg-orange-50 px-2 py-0.5 rounded-md">Rp 150.000</span>
+                        </div>
+                        <input type="range" id="priceRange" min="0" max="150000" step="5000" value="150000" 
+                               class="w-full h-2 bg-orange-100 rounded-lg appearance-none cursor-pointer accent-orange-600"
+                               aria-label="Rentang harga maksimal">
+                        <div class="flex justify-between text-[11px] text-gray-400 mt-1">
+                            <span>Rp 0</span>
+                            <span>Rp 150rb</span>
+                        </div>
+                    </div>
+
+                    <!-- Tombol Terapkan Filter -->
+                    <button type="button" id="applyFilterButton" class="w-full bg-orange-600 hover:bg-orange-700 text-white font-semibold py-2.5 px-4 rounded-xl text-sm transition button-click-effect shadow-sm">
+                        Terapkan Filter
+                    </button>
+                </div>
+            </aside>
+
+            <!-- Product Grid & Sorting -->
+            <section class="w-full lg:w-3/4 animate-on-load slide-in-right">
+                <!-- Sorting & Counter Bar -->
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-6 bg-white p-3.5 sm:px-5 rounded-xl border border-orange-100 shadow-sm">
+                    <p id="productCountDisplay" class="text-gray-600 text-xs sm:text-sm font-medium">
+                        Memuat produk...
+                    </p>
+                    
+                    <div class="flex items-center space-x-2 w-full sm:w-auto">
+                        <label for="sort" class="text-xs sm:text-sm font-medium text-gray-700 whitespace-nowrap">Urutkan:</label>
+                        <select id="sort" name="sort" class="w-full sm:w-auto bg-orange-50/50 border border-orange-200 rounded-xl px-3 py-1.5 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 font-medium text-gray-800">
+                            <option value="default">Relevansi</option>
+                            <option value="id-desc">Produk Terbaru</option>
+                            <option value="harga-asc">Harga: Rendah ke Tinggi</option>
+                            <option value="harga-desc">Harga: Tinggi ke Rendah</option>
+                            <option value="nama-asc">Nama: A - Z</option>
+                            <option value="nama-desc">Nama: Z - A</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Product Grid -->
+                <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+                    <!-- Produk dirender secara dinamis oleh catalog.js -->
+                    <div class="col-span-full py-16 flex flex-col items-center justify-center">
+                        <div class="loading-spinner mb-3"></div>
+                        <p class="text-gray-500 text-sm">Memuat aneka kerupuk kulit sapi...</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Quick View Product Detail Modal -->
+    <div id="productDetailModal" class="modal-overlay fixed inset-0 z-[1000] flex items-center justify-center p-4 hidden">
+        <div class="modal-content bg-white rounded-2xl shadow-2xl max-w-lg w-full overflow-hidden border border-orange-100 transform transition-all">
+            <div class="relative">
+                <img id="modalProductImage" src="" alt="Detail Produk" class="w-full h-56 sm:h-64 object-cover">
+                <button type="button" id="closeModalButton" class="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/90 text-gray-700 hover:text-orange-600 hover:bg-white flex items-center justify-center shadow transition" aria-label="Tutup jendela detail">
+                    <i class="fas fa-times"></i>
+                </button>
+                <span id="modalProductCategory" class="absolute bottom-3 left-3 bg-orange-600 text-white text-xs font-semibold px-3 py-1 rounded-full shadow"></span>
+            </div>
+            
+            <div class="p-6">
+                <h3 id="modalProductName" class="text-xl font-bold text-gray-900 mb-2"></h3>
+                <p id="modalProductPrice" class="text-2xl font-extrabold text-orange-600 mb-4"></p>
+                <p id="modalProductDesc" class="text-sm text-gray-600 leading-relaxed mb-6"></p>
+
+                <div class="flex items-center space-x-4 pt-4 border-t border-gray-100">
+                    <div class="flex items-center space-x-2">
+                        <span class="text-xs text-gray-500 font-medium">Jumlah:</span>
+                        <input type="number" id="modalProductQty" min="1" value="1" class="w-16 py-1.5 px-2.5 text-center text-sm font-semibold border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500">
+                    </div>
+                    <button type="button" id="modalAddToCartButton" class="flex-grow bg-orange-600 hover:bg-orange-700 text-white font-bold py-2.5 px-4 rounded-xl text-sm transition button-click-effect shadow flex items-center justify-center">
+                        <i class="fas fa-cart-plus mr-2"></i> Tambah ke Keranjang
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating WhatsApp CTA Button -->
+    <a href="https://wa.me/6283111481327?text=Halo%20Omah%20Rambak,%20saya%20ingin%20konsultasi%20mengenai%20produk%20di%20katalog." target="_blank" rel="noopener noreferrer" class="floating-whatsapp" aria-label="Hubungi Omah Rambak via WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+        <span class="floating-whatsapp-tooltip">Chat Kami di WhatsApp</span>
+    </a>
+
+    <!-- Footer -->
+    <footer class="bg-orange-800 text-white pt-10 pb-8 mt-auto border-t border-orange-700">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left">
+                <div>
+                    <h3 class="text-lg font-bold flex items-center justify-center sm:justify-start space-x-2">
+                        <i class="fas fa-cookie-bite text-amber-300"></i>
+                        <span>Omah <span class="text-amber-300">Rambak</span></span>
+                    </h3>
+                    <p class="text-xs text-orange-200 mt-1">Kerupuk Kulit Sapi Asli Berkualitas - Matang & Mentah.</p>
+                </div>
+                <div class="flex space-x-4 text-lg">
+                    <a href="https://wa.me/6283111481327" target="_blank" rel="noopener noreferrer" class="hover:text-amber-300 transition" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" class="hover:text-amber-300 transition" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="hover:text-amber-300 transition" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+            <div class="pt-6 mt-6 border-t border-orange-700/60 text-center text-xs text-orange-300">
+                <p>&copy; 2026 Omah Rambak. Semua Hak Dilindungi.</p>
             </div>
         </div>
     </footer>
 
-    <div id="toastNotification"><span id="toastMessage"></span></div>
-    
-    <script type="application/ld+json" id="dynamicPageSchema">
-    </script>
+    <!-- Toast Notification Container -->
+    <div id="toastNotification"><i id="toastIcon" class="fas fa-check-circle text-lg"></i><span id="toastMessage"></span></div>
 
-    <script>
-        let toastTimeout;
-        function showToast(message, type = 'success', duration = 3000) {
-            const toast = document.getElementById('toastNotification');
-            const toastMessage = document.getElementById('toastMessage');
-            if (!toast || !toastMessage) { console.error("Toast elements not found!"); alert(message); return; }
-            toastMessage.textContent = message;
-            toast.className = 'fixed top-5 right-5 text-white py-3 px-5 rounded-lg shadow-md opacity-0 transform translate-y-[-20px] transition-all duration-300 ease-out z-[1000]';
-            if (type === 'success') toast.classList.add('success');
-            else if (type === 'error') toast.classList.add('error');
-            else if (type === 'info') toast.classList.add('info');
-            else toast.classList.add('success');
-            toast.classList.add('show');
-            clearTimeout(toastTimeout);
-            toastTimeout = setTimeout(() => { toast.classList.remove('show'); }, duration);
-        }
-
-        const CART_KEY = 'omahRambakCart';
-        function getCart() { return JSON.parse(localStorage.getItem(CART_KEY)) || []; }
-        function saveCart(cart) { localStorage.setItem(CART_KEY, JSON.stringify(cart)); updateCartIconCount(); }
-        function addToCart(productId, productName, productPrice, productImage) {
-            let cart = getCart();
-            const price = parseInt(productPrice.replace(/\./g, ''));
-            const existingItemIndex = cart.findIndex(item => item.id === productId);
-            if (existingItemIndex > -1) {
-                cart[existingItemIndex].quantity += 1;
-            } else {
-                cart.push({ id: productId, name: productName, price: price, image: productImage, quantity: 1 });
-            }
-            saveCart(cart);
-            showToast(`"${productName}" ditambahkan ke keranjang!`, 'success');
-        }
-        function updateCartIconCount() {
-            const cart = getCart();
-            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-            const elementsToUpdate = [document.getElementById('cartItemCount'), document.getElementById('cartItemCountMobile')];
-            elementsToUpdate.forEach(el => {
-                if (el) {
-                    if (totalItems > 0) { el.textContent = totalItems; el.classList.remove('hidden'); } 
-                    else { el.classList.add('hidden'); }
-                }
-            });
-        }
-
-        const mobileMenuButton = document.getElementById('mobileMenuButton');
-        const mobileMenu = document.getElementById('mobileMenu');
-        if (mobileMenuButton && mobileMenu) {
-            mobileMenuButton.addEventListener('click', function() { mobileMenu.classList.toggle('hidden'); });
-        }
-        
-        let allProducts = []; 
-        const productContainer = document.getElementById('productGrid');
-        const productCountDisplay = document.getElementById('productCountDisplay');
-        const priceRangeInput = document.getElementById('priceRange');
-        const priceRangeValueDisplay = document.getElementById('priceRangeValue');
-        const sortSelect = document.getElementById('sort');
-        const domain = "https://omah-rambak.great-site.net"; 
-        let currentDisplayedProductSchemas = [];
-
-        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
-        const observerCallback = (entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        };
-        const scrollObserver = new IntersectionObserver(observerCallback, observerOptions);
-
-        function observeLoadAnimations() {
-            const elementsToAnimate = document.querySelectorAll('.animate-on-load');
-            elementsToAnimate.forEach(el => { setTimeout(() => el.classList.add('is-visible'), 50); });
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            updateCartIconCount(); 
-            observeLoadAnimations();
-            loadProducts();
-
-            if (priceRangeInput && priceRangeValueDisplay) {
-                priceRangeValueDisplay.textContent = `Rp ${parseInt(priceRangeInput.max).toLocaleString('id-ID')}`;
-                priceRangeInput.value = priceRangeInput.max; 
-                priceRangeInput.addEventListener('input', () => { 
-                    priceRangeValueDisplay.textContent = `Rp ${parseInt(priceRangeInput.value).toLocaleString('id-ID')}`;
-                    priceRangeValueDisplay.classList.add('updated');
-                    setTimeout(() => priceRangeValueDisplay.classList.remove('updated'), 500);
-                });
-                priceRangeInput.addEventListener('change', applyFiltersAndSort); 
-            }
-
-            document.getElementById('applyFilterButton')?.addEventListener('click', applyFiltersAndSort);
-            document.getElementById('resetFilterButton')?.addEventListener('click', resetFilters);
-            document.getElementById('sort')?.addEventListener('change', applyFiltersAndSort);
-            document.querySelectorAll('.filter-checkbox').forEach(checkbox => {
-                checkbox.addEventListener('change', applyFiltersAndSort); 
-            });
-
-            const currentPage = window.location.pathname.split("/").pop() || 'index.html';
-            const navLinks = { 'index.html': 'navBeranda', 'catalog.html': 'navKatalog', 'about.html': 'navTentang', 'cart.html': 'navKeranjang' };
-            Object.values(navLinks).forEach(id => {
-                const el = document.getElementById(id);
-                if (el) el.classList.remove('active-link', 'text-orange-200', 'font-semibold');
-            });
-            const activeNavId = navLinks[currentPage];
-            if (activeNavId) {
-                const activeEl = document.getElementById(activeNavId);
-                if (activeEl) activeEl.classList.add('active-link', 'text-orange-200', 'font-semibold');
-            }
-        });
-
-        async function loadProducts() {
-            setLoadingState(true);
-            try {
-                const response = await fetch('products.json'); 
-                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-                allProducts = await response.json();
-                applyFiltersAndSort(); 
-            } catch (error) {
-                console.error("Tidak dapat memuat produk:", error);
-                if (productContainer) productContainer.innerHTML = '<p class="col-span-full text-center text-red-500">Gagal memuat produk. Silakan coba lagi nanti.</p>';
-                if (productCountDisplay) productCountDisplay.textContent = 'Gagal memuat produk.';
-            }
-        }
-        
-        function setLoadingState(isLoading) {
-            if (isLoading) {
-                if (productContainer) {
-                    productContainer.innerHTML = `<div class="col-span-full loading-spinner-container"><div class="loading-spinner"></div></div><p class="col-span-full text-center text-gray-500 -mt-8">Memuat produk...</p>`;
-                }
-                if (productCountDisplay) productCountDisplay.innerHTML = 'Memuat jumlah produk...';
-            }
-        }
-
-        function displayProducts(productsToDisplay) {
-            if (!productContainer) return;
-            productContainer.innerHTML = ''; 
-            currentDisplayedProductSchemas = []; 
-            if (productsToDisplay.length === 0) {
-                productContainer.innerHTML = '<p class="col-span-full text-center text-gray-500">Tidak ada produk yang sesuai dengan filter Anda.</p>';
-            } else {
-                productsToDisplay.forEach((product, index) => {
-                    const productCardHTML = `
-                        <div id="${product.id}" class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col product-card product-card-hover transition-all duration-300 ease-out" style="transition-delay: ${index * 0.07}s;">
-                            <a href="#${product.id}" aria-label="Lihat detail ${product.name}"><img src="${product.image}" alt="${product.name}" class="w-full h-48 sm:h-56 object-cover"></a>
-                            <div class="p-4 sm:p-6 flex flex-col flex-grow">
-                                <h3 class="text-base sm:text-lg md:text-xl font-semibold mb-2 text-orange-600"><a href="#${product.id}" class="hover:underline">${product.name}</a></h3>
-                                <p class="text-xs sm:text-sm text-gray-600 mb-3 flex-grow">${product.description}</p>
-                                <p class="text-sm sm:text-base md:text-lg font-bold text-orange-500 mb-4">Rp ${product.price}</p>
-                                <button onclick="addToCart('${product.id}', '${product.name.replace(/'/g, "\\'")}', '${product.price}', '${product.image}')" class="mt-auto w-full bg-orange-500 hover:bg-orange-700 text-white font-semibold py-2 px-3 sm:px-4 rounded-lg transition duration-300 flex items-center justify-center text-xs sm:text-sm button-click-effect"><i class="fas fa-cart-plus mr-2"></i> Tambah ke Keranjang</button>
-                            </div>
-                        </div>`;
-                    productContainer.insertAdjacentHTML('beforeend', productCardHTML);
-                    const productSchema = {
-                      "@context": "https://schema.org", "@type": "Product", "name": product.name,
-                      "image": `${domain}/${product.image.startsWith('assets/') ? product.image : 'assets/images/' + product.image}`,
-                      "description": product.description, "sku": product.id, "brand": { "@type": "Brand", "name": "Omah Rambak" },
-                      "offers": { "@type": "Offer", "url": `${domain}/catalog.html#${product.id}`, "priceCurrency": "IDR", "price": product.price.replace(/\./g, ''), "availability": "https://schema.org/InStock", "itemCondition": "https://schema.org/NewCondition" }
-                    };
-                    currentDisplayedProductSchemas.push(productSchema);
-                });
-                void productContainer.offsetWidth; 
-                const newProductCards = productContainer.querySelectorAll('.product-card');
-                newProductCards.forEach(card => card.classList.add('is-visible'));
-            }
-            updateProductCount(productsToDisplay.length);
-            injectPageSchema(); 
-        }
-        
-        function updateProductCount(displayedCount) { 
-            if (productCountDisplay) {
-                 if (allProducts.length === 0 && displayedCount === 0 && productContainer.querySelector('.loading-spinner')) { 
-                    productCountDisplay.innerHTML = 'Memuat jumlah produk...';
-                } else {
-                    productCountDisplay.innerHTML = `Menampilkan <span class="font-semibold">${displayedCount}</span> dari <span class="font-semibold">${allProducts.length}</span> produk`;
-                    productCountDisplay.classList.add('count-updated');
-                    setTimeout(() => productCountDisplay.classList.remove('count-updated'), 500);
-                }
-            }
-        }
-
-        function resetFilters() { 
-            document.querySelectorAll('.filter-checkbox').forEach(checkbox => checkbox.checked = false);
-            if (priceRangeInput) {
-                priceRangeInput.value = priceRangeInput.max; 
-                 if (priceRangeValueDisplay) priceRangeValueDisplay.textContent = `Rp ${parseInt(priceRangeInput.max).toLocaleString('id-ID')}`;
-            }
-            if (sortSelect) sortSelect.value = 'default';
-            applyFiltersAndSort();
-        }
-
-        function applyFiltersAndSort() { 
-            if (!allProducts || allProducts.length === 0 && productContainer.innerHTML.includes('Gagal memuat produk')) {
-                if (productCountDisplay && !allProducts) productCountDisplay.textContent = 'Data produk tidak tersedia.';
-                return;
-            }
-            setLoadingState(true);
-            setTimeout(() => {
-                let filteredProducts = [...allProducts];
-                const selectedCategories = Array.from(document.querySelectorAll('input[name="categoryFilter"]:checked')).map(cb => cb.value);
-                if (selectedCategories.length > 0) filteredProducts = filteredProducts.filter(product => selectedCategories.includes(product.category));
-                if (priceRangeInput) { 
-                    const maxPrice = parseInt(priceRangeInput.value);
-                    filteredProducts = filteredProducts.filter(product => parseInt(product.price.replace(/\./g, '')) <= maxPrice);
-                }
-                const sortBy = sortSelect ? sortSelect.value : 'default'; 
-                switch (sortBy) {
-                    case 'id-desc': filteredProducts.sort((a,b) => b.id.localeCompare(a.id)); break;
-                    case 'harga-asc': filteredProducts.sort((a, b) => parseInt(a.price.replace(/\./g, '')) - parseInt(b.price.replace(/\./g, ''))); break;
-                    case 'harga-desc': filteredProducts.sort((a, b) => parseInt(b.price.replace(/\./g, '')) - parseInt(a.price.replace(/\./g, ''))); break;
-                    case 'nama-asc': filteredProducts.sort((a,b) => a.name.localeCompare(b.name)); break;
-                    case 'nama-desc': filteredProducts.sort((a,b) => b.name.localeCompare(a.name)); break;
-                }
-                displayProducts(filteredProducts);
-            }, 100);
-        }
-
-        function injectPageSchema() {
-            const oldSchemaElement = document.getElementById('dynamicPageSchema');
-            if (oldSchemaElement) oldSchemaElement.remove(); // Hapus skema lama jika ada
-            
-            const newScriptElement = document.createElement('script'); // Buat elemen skrip baru
-            newScriptElement.type = 'application/ld+json';
-            newScriptElement.id = 'dynamicPageSchema'; // Beri ID baru
-
-            if (currentDisplayedProductSchemas.length > 0) {
-                const itemListSchema = {
-                    "@context": "https://schema.org", "@type": "ItemList", "name": "Katalog Produk Omah Rambak",
-                    "description": "Daftar produk kerupuk kulit sapi dari Omah Rambak yang tersedia.", "url": `${domain}/catalog.html`,
-                    "numberOfItems": currentDisplayedProductSchemas.length,
-                    "itemListElement": currentDisplayedProductSchemas.map((productSchema, index) => ({ "@type": "ListItem", "position": index + 1, "item": productSchema }))
-                };
-                newScriptElement.textContent = JSON.stringify(itemListSchema);
-            } else {
-                 // Schema dasar untuk halaman katalog jika tidak ada produk (atau sebelum produk dimuat)
-                newScriptElement.textContent = JSON.stringify({
-                    "@context": "https://schema.org",
-                    "@type": "WebPage",
-                    "name": "Katalog Produk Omah Rambak",
-                    "description": "Jelajahi berbagai pilihan kerupuk kulit sapi berkualitas dari Omah Rambak.",
-                    "url": `${domain}/catalog.html`
-                });
-            }
-            document.head.appendChild(newScriptElement);
-        }
-    </script>
+    <!-- Modular Scripts -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/catalog.js"></script>
 </body>
 </html>

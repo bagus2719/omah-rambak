@@ -3,337 +3,389 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tentang Omah Rambak - Produsen Kerupuk Kulit Sapi Berkualitas</title>
-    <meta name="description" content="Kenali lebih jauh Omah Rambak, komitmen kami terhadap kualitas kerupuk kulit sapi, dan cerita di balik kelezatan produk tradisional kami.">
-    <meta name="keywords" content="tentang omah rambak, profil omah rambak, produsen kerupuk kulit, sejarah omah rambak, visi misi omah rambak">
     
+    <!-- Primary SEO Meta Tags -->
+    <title>Tentang Kami - Cerita & Komitmen Kualitas Omah Rambak</title>
+    <meta name="title" content="Tentang Kami - Cerita & Komitmen Kualitas Omah Rambak">
+    <meta name="description" content="Pelajari kisah perjalanan Omah Rambak dalam menghadirkan kerupuk kulit sapi asli berkualitas dari resep keluarga turun-temurun. Visi, misi, dan komitmen mutu higienis.">
+    <meta name="keywords" content="tentang omah rambak, profil omah rambak, produsen kerupuk kulit sapi, sejarah omah rambak, visi misi omah rambak, proses produksi rambak">
+    <meta name="author" content="Omah Rambak">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#ea580c">
+    <link rel="canonical" href="https://omah-rambak.great-site.net/about.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://omah-rambak.great-site.net/about.html">
+    <meta property="og:title" content="Tentang Omah Rambak - Tradisi & Mutu Kerupuk Kulit Sapi Asli">
+    <meta property="og:description" content="Cerita di balik kelezatan kerupuk rambak sapi Omah Rambak, resep keluarga otentik yang melintasi generasi.">
+    <meta property="og:image" content="https://omah-rambak.great-site.net/assets/images/proses-penjemuran-kerupuk-rambak.jpeg">
+    <meta property="og:site_name" content="Omah Rambak">
+    <meta property="og:locale" content="id_ID">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://omah-rambak.great-site.net/about.html">
+    <meta name="twitter:title" content="Tentang Omah Rambak - Produsen Kerupuk Kulit Sapi">
+    <meta name="twitter:description" content="Mengenal lebih dekat dedikasi dan perjalanan kualitas Omah Rambak.">
+    <meta name="twitter:image" content="https://omah-rambak.great-site.net/assets/images/proses-penjemuran-kerupuk-rambak.jpeg">
+
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+    <link rel="alternate icon" href="assets/images/favicon.ico" type="image/x-icon">
+
+    <!-- External Assets: Tailwind CSS, Google Fonts, Font Awesome -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon"> 
-    <style>
-        body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
-        .animate-on-load, .animate-on-scroll { opacity: 0; transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
-        .animate-on-load.is-visible, .animate-on-scroll.is-visible { opacity: 1; transform: none !important; }
-        .fade-in-up { transform: translateY(40px); }
-        .fade-in-down { transform: translateY(-40px); }
-        .slide-in-left { transform: translateX(-60px); }
-        .slide-in-right { transform: translateX(60px); }
-        .pop-in { transform: scale(0.85); }
-        .button-click-effect { transition: transform 0.1s ease-out; }
-        .button-click-effect:active { transform: scale(0.95); }
-        .nav-link-animate { position: relative; padding-bottom: 4px; }
-        .nav-link-animate::after { content: ''; position: absolute; left: 0; bottom: 0; width: 0; height: 2px; background-color: #fbbf24; transition: width 0.3s ease-out; }
-        .nav-link-animate:hover::after, .nav-link-animate.active-link::after { width: 100%; }
-        #navTentang.active-link { color: #fcd34d; }
-        .stagger-children > * { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease-out, transform 0.5s ease-out; }
-        .stagger-children.is-visible > * { opacity: 1; transform: translateY(0); }
-        .icon-animate .fas { transition: transform 0.3s ease-in-out; }
-        .animate-on-scroll.is-visible .icon-animate .fas, .animate-on-load.is-visible .icon-animate .fas, .stagger-children.is-visible .icon-animate .fas, .stagger-children.is-visible > .icon-animate .fas { animation: iconPop 0.5s 0.5s ease-out forwards; }
-        @keyframes iconPop { 0% { transform: scale(0.5); opacity: 0; } 70% { transform: scale(1.1); } 100% { transform: scale(1); opacity: 1; } }
-        .reason-card:hover .icon-animate .fas { transform: scale(1.2) rotate(-5deg); }
-        .team-member-img { width: 120px; height: 120px; object-fit: cover; border-radius: 50%; margin: 0 auto 1rem; border: 3px solid #fb923c; transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; }
-        .team-card:hover .team-member-img { transform: scale(1.05); box-shadow: 0 0 15px rgba(251, 146, 60, 0.5); }
-        .cart-item-count-badge {
-            background-color: #ef4444;
-            color: white;
-            border-radius: 50%;
-            padding: 0.1em 0.4em;
-            font-size: 0.7rem;
-            position: absolute;
-            top: -5px;
-            right: -10px;
-            line-height: 1;
-        }
-        #toastNotification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 12px 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            opacity: 0;
-            transform: translateY(-30px) scale(0.95);
-            transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-            z-index: 1000;
-            font-size: 0.9rem;
-        }
-        #toastNotification.show { opacity: 1; transform: translateY(0) scale(1); }
-        #toastNotification.success { background-color: #22c55e; color: white; }
-        #toastNotification.error { background-color: #ef4444; color: white; }
-        #toastNotification.info { background-color: #3b82f6; color: white; }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Modular Stylesheet -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- Structured Data JSON-LD (AboutPage + Organization + Breadcrumbs) -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Omah Rambak",
-        "url": "https://omah-rambak.great-site.net/about.html",
-        "logo": "https://omah-rambak.great-site.net/assets/images/favicon.ico",
-        "description": "Produsen kerupuk kulit sapi berkualitas dengan resep tradisional. Kenali cerita, visi, dan misi Omah Rambak.",
-        "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Kota Anda", 
-            "addressRegion": "Provinsi Anda",
-            "postalCode": "KodePosAnda",
-            "addressCountry": "ID"
-        },
-        "contactPoint": {
-            "@type": "ContactPoint",
-            "telephone": "+62-812-5273-6904",
-            "contactType": "Customer Service"
-        }
+        "@graph": [
+            {
+                "@type": "AboutPage",
+                "@id": "https://omah-rambak.great-site.net/about.html#webpage",
+                "url": "https://omah-rambak.great-site.net/about.html",
+                "name": "Tentang Omah Rambak",
+                "description": "Profil produsen kerupuk kulit sapi asli berkualitas dengan resep tradisional keluarga."
+            },
+            {
+                "@type": "Organization",
+                "@id": "https://omah-rambak.great-site.net/#organization",
+                "name": "Omah Rambak",
+                "url": "https://omah-rambak.great-site.net/",
+                "logo": "https://omah-rambak.great-site.net/assets/images/favicon.svg",
+                "description": "Produsen dan distributor kerupuk kulit sapi asli matang renyah dan mentah siap goreng.",
+                "contactPoint": {
+                    "@type": "ContactPoint",
+                    "telephone": "+6283111481327",
+                    "contactType": "Customer Service",
+                    "availableLanguage": "id"
+                }
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "Beranda",
+                        "item": "https://omah-rambak.great-site.net/index.html"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": "Tentang Kami",
+                        "item": "https://omah-rambak.great-site.net/about.html"
+                    }
+                ]
+            }
+        ]
     }
     </script>
 </head>
-<body class="bg-orange-50 text-gray-800">
+<body class="bg-orange-50/40 text-gray-800 flex flex-col min-h-screen">
 
-    <header class="bg-orange-600 text-white shadow-md sticky top-0 z-50">
-        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <a href="index.html" class="text-2xl font-bold">Omah Rambak</a>
-            <div class="flex items-center">
-                <nav class="hidden md:flex md:space-x-2 lg:space-x-4 items-center">
-                    <a href="index.html" id="navBeranda" class="nav-link-animate hover:text-orange-200 px-2 py-1 rounded-md">Beranda</a>
-                    <a href="catalog.html" id="navKatalog" class="nav-link-animate hover:text-orange-200 px-2 py-1 rounded-md">Katalog</a>
-                    <a href="about.html" id="navTentang" class="nav-link-animate px-2 py-1 rounded-md">Tentang Kami</a>
-                    <a href="cart.html" id="navKeranjang" class="nav-link-animate hover:text-orange-200 px-3 py-1 rounded-md relative">
-                        <i class="fas fa-shopping-cart"></i>
+    <!-- Header & Navigation -->
+    <header class="header-nav bg-orange-600/95 text-white shadow-md sticky top-0 z-50 transition duration-300">
+        <div class="container mx-auto px-4 sm:px-6 py-3.5 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2 text-2xl font-black tracking-tight hover:opacity-95 transition" aria-label="Beranda Omah Rambak">
+                <i class="fas fa-cookie-bite text-amber-300 text-2xl"></i>
+                <span>Omah <span class="text-amber-300">Rambak</span></span>
+            </a>
+            
+            <div class="flex items-center space-x-1 sm:space-x-3">
+                <nav class="hidden md:flex items-center space-x-1 lg:space-x-2" aria-label="Navigasi Utama">
+                    <a href="index.html" id="navBeranda" class="nav-link-animate px-3 py-1.5 rounded-lg text-white hover:text-amber-200 transition">Beranda</a>
+                    <a href="catalog.html" id="navKatalog" class="nav-link-animate px-3 py-1.5 rounded-lg text-white hover:text-amber-200 transition">Katalog Produk</a>
+                    <a href="about.html" id="navTentang" class="nav-link-animate px-3 py-1.5 rounded-lg text-white hover:text-amber-200 transition">Tentang Kami</a>
+                    <a href="cart.html" id="navKeranjang" class="nav-link-animate px-3.5 py-1.5 rounded-lg text-white hover:text-amber-200 transition relative flex items-center" aria-label="Keranjang Belanja">
+                        <i class="fas fa-shopping-cart text-lg mr-1"></i>
+                        <span>Keranjang</span>
                         <span id="cartItemCount" class="cart-item-count-badge hidden">0</span>
                     </a>
                 </nav>
-                <button class="md:hidden text-white focus:outline-none button-click-effect ml-4" id="mobileMenuButton">
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuButton" class="md:hidden text-white focus:outline-none p-2 rounded-lg hover:bg-orange-700 transition" aria-label="Buka menu navigasi">
                     <i class="fas fa-bars text-xl"></i>
                 </button>
             </div>
         </div>
-        <div class="md:hidden hidden bg-orange-600" id="mobileMenu">
-            <a href="index.html" class="block px-6 py-3 hover:bg-orange-500 hover:text-white transition-colors duration-200">Beranda</a>
-            <a href="catalog.html" class="block px-6 py-3 hover:bg-orange-500 hover:text-white transition-colors duration-200">Katalog</a>
-            <a href="about.html" class="block px-6 py-3 hover:bg-orange-500 hover:text-white transition-colors duration-200">Tentang Kami</a>
-            <a href="cart.html" class="block px-6 py-3 hover:bg-orange-500 hover:text-white transition-colors duration-200 relative">
-                Keranjang <span id="cartItemCountMobile" class="absolute top-1 right-3 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full hidden">0</span>
+
+        <!-- Mobile Drawer Menu -->
+        <nav id="mobileMenu" class="md:hidden hidden bg-orange-700/98 border-t border-orange-500/50 shadow-inner px-4 py-3 space-y-1.5" aria-label="Navigasi Mobile">
+            <a href="index.html" class="block px-4 py-2.5 rounded-lg hover:bg-orange-600 font-medium transition">
+                <i class="fas fa-home w-6 text-amber-300"></i> Beranda
             </a>
-        </div>
+            <a href="catalog.html" class="block px-4 py-2.5 rounded-lg hover:bg-orange-600 font-medium transition">
+                <i class="fas fa-box-open w-6 text-amber-300"></i> Katalog Produk
+            </a>
+            <a href="about.html" class="block px-4 py-2.5 rounded-lg hover:bg-orange-600 font-medium transition">
+                <i class="fas fa-info-circle w-6 text-amber-300"></i> Tentang Kami
+            </a>
+            <a href="cart.html" class="block px-4 py-2.5 rounded-lg hover:bg-orange-600 font-medium transition flex items-center justify-between">
+                <div>
+                    <i class="fas fa-shopping-cart w-6 text-amber-300"></i> Keranjang Belanja
+                </div>
+                <span id="cartItemCountMobile" class="cart-item-count-badge relative top-0 right-0 hidden">0</span>
+            </a>
+        </nav>
     </header>
 
-    <section class="bg-orange-100 py-12 animate-on-load fade-in-down">
-        <div class="container mx-auto px-4 sm:px-6 text-center"> 
-            <h1 class="text-3xl sm:text-4xl font-bold text-orange-700">Tentang Omah Rambak</h1>
-            <p class="text-base sm:text-lg text-gray-600 mt-2">Mengenal Lebih Dekat Perjalanan dan Komitmen Kami</p>
-        </div>
-    </section>
-
-    <section class="py-12 md:py-16">
-        <div class="container mx-auto px-4 sm:px-6"> 
-            <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
-                <div class="md:w-1/2 animate-on-scroll slide-in-left">
-                    <img src="assets/images/proses-penjemuran-kerupuk-rambak.jpeg" alt="Proses produksi kerupuk rambak Omah Rambak" class="rounded-lg shadow-xl w-full"> 
-                </div>
-                <div class="md:w-1/2 animate-on-scroll slide-in-right stagger-children">
-                    <h2 class="text-2xl sm:text-3xl font-bold text-orange-600 mb-6">Cerita Kami: Dari Resep Keluarga Menuju Jangkauan Nusantara</h2>
-                    <p class="text-sm sm:text-base text-gray-700 leading-relaxed mb-4">
-                        Perjalanan Omah Rambak dimulai dari sebuah warisan berharga: resep kerupuk kulit sapi otentik yang diajarkan oleh paman ayah kami dari Jakarta. Awalnya, kami berfungsi sebagai rumah produksi, dengan tekun membuat kerupuk untuk disetorkan kepada beliau. Momen inilah yang menjadi cikal bakal dedikasi kami terhadap kualitas dan cita rasa asli kerupuk kulit.
-                    </p>
-                    <p class="text-sm sm:text-base text-gray-700 leading-relaxed mb-4">
-                        Seiring berjalannya waktu dan bertambahnya keahlian, semangat kami untuk berbagi kelezatan ini semakin besar. Omah Rambak pun mulai berkembang, tidak hanya sebagai rumah produksi, tetapi juga sebagai penyedia kerupuk kulit sapi jadi. Kami menyajikan produk dalam berbagai bentuk – baik yang sudah matang dan renyah siap santap, maupun yang masih mentah untuk digoreng sendiri, hingga kemasan eceran yang praktis.
-                    </p>
-                     <p class="text-sm sm:text-base text-gray-700 leading-relaxed mb-4">
-                        Bagi kami, kerupuk kulit bukan sekadar camilan, melainkan bagian dari kekayaan kuliner Indonesia yang patut dibanggakan. Setiap potongan kerupuk yang sampai ke tangan Anda adalah hasil dari komitmen kami terhadap penggunaan bahan baku kulit sapi pilihan dan proses pengolahan yang higienis, selalu menjaga standar kualitas yang tinggi.
-                    </p>
-                    <p class="text-sm sm:text-base text-gray-700 leading-relaxed">
-                        Syukurlah, antusiasme para penikmat kerupuk kulit semakin hari semakin besar, dan pesanan pun kian ramai. Dari sebuah usaha rumahan yang sederhana, kini Omah Rambak terus berupaya untuk menjangkau lebih banyak lagi pecinta kuliner di seluruh Indonesia, membawa kelezatan dan kehangatan tradisi resep keluarga kami langsung ke meja Anda.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="bg-orange-100 py-12 md:py-16">
-        <div class="container mx-auto px-4 sm:px-6">
-            <div class="text-center mb-8 md:mb-12 animate-on-scroll fade-in-up">
-                <h2 class="text-2xl sm:text-3xl font-bold text-orange-700">Visi & Misi Kami</h2>
-            </div>
-            <div class="flex flex-col md:flex-row gap-8">
-                <div class="md:w-1/2 bg-white p-6 sm:p-8 rounded-lg shadow-lg animate-on-scroll pop-in icon-animate">
-                    <div class="flex items-center mb-4">
-                        <i class="fas fa-eye text-2xl sm:text-3xl text-orange-500 mr-3 sm:mr-4"></i>
-                        <h3 class="text-xl sm:text-2xl font-semibold text-orange-600">Visi Kami</h3>
-                    </div>
-                    <p class="text-sm sm:text-base text-gray-700 leading-relaxed">
-                        Menjadi produsen kerupuk kulit sapi terpercaya di Indonesia yang dikenal akan kualitas, cita rasa otentik, dan inovasi produk yang berkelanjutan.
-                    </p>
-                </div>
-                <div class="md:w-1/2 bg-white p-6 sm:p-8 rounded-lg shadow-lg animate-on-scroll pop-in icon-animate" style="transition-delay: 0.1s;"> 
-                    <div class="flex items-center mb-4">
-                        <i class="fas fa-bullseye text-2xl sm:text-3xl text-orange-500 mr-3 sm:mr-4"></i>
-                        <h3 class="text-xl sm:text-2xl font-semibold text-orange-600">Misi Kami</h3>
-                    </div>
-                    <ul class="list-disc list-inside text-sm sm:text-base text-gray-700 leading-relaxed space-y-2">
-                        <li class="animate-on-scroll fade-in-up" style="transition-delay: 0.2s !important;">Menghasilkan produk kerupuk kulit sapi berkualitas tinggi.</li>
-                        <li class="animate-on-scroll fade-in-up" style="transition-delay: 0.3s !important;">Menjaga cita rasa tradisional Nusantara.</li>
-                        <li class="animate-on-scroll fade-in-up" style="transition-delay: 0.4s !important;">Memberikan pelayanan terbaik kepada pelanggan.</li>
-                        <li class="animate-on-scroll fade-in-up" style="transition-delay: 0.5s !important;">Terus berinovasi dalam produk.</li>
-                        <li class="animate-on-scroll fade-in-up" style="transition-delay: 0.6s !important;">Berkontribusi pada pelestarian kuliner tradisional.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-12 md:py-16">
-        <div class="container mx-auto px-4 sm:px-6">
-            <h2 class="text-2xl sm:text-3xl font-bold text-center text-orange-700 mb-8 md:mb-12 animate-on-scroll fade-in-up">Mengapa Memilih Omah Rambak?</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 text-center stagger-children">
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 pop-in reason-card">
-                    <div class="p-3 sm:p-4 inline-block bg-orange-100 rounded-full mb-4 icon-animate">
-                        <i class="fas fa-medal text-3xl sm:text-4xl text-orange-500"></i>
-                    </div>
-                    <h3 class="text-lg sm:text-xl font-semibold text-orange-600 mb-2">Kualitas Terjamin</h3>
-                    <p class="text-xs sm:text-sm text-gray-600">Kulit sapi segar pilihan, bumbu alami tanpa pengawet.</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 pop-in reason-card">
-                     <div class="p-3 sm:p-4 inline-block bg-orange-100 rounded-full mb-4 icon-animate">
-                        <i class="fas fa-utensils text-3xl sm:text-4xl text-orange-500"></i>
-                    </div>
-                    <h3 class="text-lg sm:text-xl font-semibold text-orange-600 mb-2">Rasa Otentik</h3>
-                    <p class="text-xs sm:text-sm text-gray-600">Resep turun-temurun, rasa gurih dan renyah asli.</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 pop-in reason-card">
-                    <div class="p-3 sm:p-4 inline-block bg-orange-100 rounded-full mb-4 icon-animate">
-                        <i class="fas fa-hands-helping text-3xl sm:text-4xl text-orange-500"></i>
-                    </div>
-                    <h3 class="text-lg sm:text-xl font-semibold text-orange-600 mb-2">Pelayanan Sepenuh Hati</h3>
-                    <p class="text-xs sm:text-sm text-gray-600">Kepuasan Anda prioritas, layanan ramah.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <section class="bg-orange-100 py-12 md:py-16">
-        <div class="container mx-auto px-4 sm:px-6">
-            <h2 class="text-2xl sm:text-3xl font-bold text-center text-orange-700 mb-8 md:mb-12 animate-on-scroll fade-in-up">Tim Kami</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center stagger-children">
-                <div class="bg-white p-4 sm:p-6 rounded-lg shadow-md pop-in team-card">
-                    <img src="https://placehold.co/120x120/FFE5B4/A0522D?text=Mujiono" alt="Foto Pendiri Omah Rambak - Mujiono" class="team-member-img">
-                    <h4 class="text-md sm:text-lg font-semibold text-orange-600">Mujiono</h4>
-                    <p class="text-xs sm:text-sm text-gray-500">Pendiri & CEO</p>
-                </div>
-                 <div class="bg-white p-4 sm:p-6 rounded-lg shadow-md pop-in team-card">
-                    <img src="https://placehold.co/120x120/FFE5B4/A0522D?text=Edi" alt="Foto Kepala Produksi Omah Rambak - Edi" class="team-member-img">
-                    <h4 class="text-md sm:text-lg font-semibold text-orange-600">Edi</h4>
-                    <p class="text-xs sm:text-sm text-gray-500">Kepala Produksi</p>
-                </div>
-                <div class="bg-white p-4 sm:p-6 rounded-lg shadow-md pop-in team-card">
-                    <img src="https://placehold.co/120x120/FFE5B4/A0522D?text=Umaroh" alt="Foto Pemasaran Omah Rambak - Umaroh" class="team-member-img">
-                    <h4 class="text-md sm:text-lg font-semibold text-orange-600">Umaroh</h4>
-                    <p class="text-xs sm:text-sm text-gray-500">Pemasaran & Layanan</p>
-                </div>
-                <div class="bg-white p-4 sm:p-6 rounded-lg shadow-md pop-in team-card">
-                    <img src="https://placehold.co/120x120/FFE5B4/A0522D?text=Kurir" alt="Tim Logistik Omah Rambak" class="team-member-img">
-                    <h4 class="text-md sm:text-lg font-semibold text-orange-600">Tim Logistik</h4>
-                    <p class="text-xs sm:text-sm text-gray-500">Pengiriman</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="bg-orange-700 text-white py-8 mt-auto">
+    <!-- Page Header & Breadcrumb -->
+    <section class="bg-gradient-to-r from-orange-600 via-orange-500 to-amber-600 text-white py-10 sm:py-14 animate-on-load fade-in-down">
         <div class="container mx-auto px-4 sm:px-6 text-center">
-            <p>&copy; 2025 Omah Rambak. Semua Hak Dilindungi.</p>
-            <div class="mt-4">
-                <a href="#" class="px-2 hover:text-orange-200" aria-label="Facebook Omah Rambak"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="px-2 hover:text-orange-200" aria-label="Instagram Omah Rambak"><i class="fab fa-instagram"></i></a>
-                <a href="https://wa.me/6283111481327" target="_blank" class="px-2 hover:text-orange-200" aria-label="Whatsapp Omah Rambak"><i class="fab fa-whatsapp"></i></a>
+            <!-- Breadcrumbs -->
+            <nav class="flex justify-center mb-3 text-xs sm:text-sm text-orange-200" aria-label="Breadcrumb">
+                <ol class="inline-flex items-center space-x-1 md:space-x-2">
+                    <li><a href="index.html" class="hover:text-white transition">Beranda</a></li>
+                    <li><span class="mx-1">/</span></li>
+                    <li class="text-white font-medium">Tentang Kami</li>
+                </ol>
+            </nav>
+            <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Mengenal Omah Rambak</h1>
+            <p class="text-sm sm:text-base text-orange-100 mt-2 max-w-xl mx-auto">
+                Perjalanan cinta dan dedikasi dalam melestarikan kerupuk kulit sapi asli khas Nusantara.
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Story Section -->
+    <main class="flex-grow">
+        <section class="py-14 sm:py-20">
+            <div class="container mx-auto px-4 sm:px-6">
+                <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-14">
+                    <div class="lg:w-1/2 animate-on-scroll slide-in-left">
+                        <div class="relative">
+                            <img src="assets/images/proses-penjemuran-kerupuk-rambak.jpeg" alt="Proses penjemuran kerupuk kulit sapi tradisional Omah Rambak" class="rounded-3xl shadow-xl w-full object-cover">
+                            <div class="absolute -bottom-4 -left-4 bg-white p-4 sm:p-5 rounded-2xl shadow-lg border border-orange-100 flex items-center space-x-3">
+                                <div class="w-12 h-12 rounded-xl bg-orange-500 text-white flex items-center justify-center text-xl flex-shrink-0">
+                                    <i class="fas fa-heart"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 text-sm">Resep Turun-Temurun</h4>
+                                    <p class="text-xs text-gray-500">Kelezatan asli tanpa bahan pengawet</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="lg:w-1/2 animate-on-scroll slide-in-right">
+                        <span class="text-xs font-bold text-orange-600 tracking-wider uppercase bg-orange-100 px-3 py-1 rounded-full">Kisah Kami</span>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold text-gray-900 mt-2 mb-4 leading-tight">
+                            Dari Resep Keluarga Menuju Panggung Kuliner Nusantara
+                        </h2>
+                        <div class="space-y-4 text-sm sm:text-base text-gray-600 leading-relaxed">
+                            <p>
+                                Perjalanan <strong>Omah Rambak</strong> berakar dari warisan keluarga yang sangat berharga: sebuah formula bumbu dan cara pengolahan kerupuk kulit sapi otentik yang diajarkan oleh paman ayah kami dari Jakarta. Awalnya, kami beroperasi sebagai rumah produksi yang tekun menyiapkan kerupuk dengan standar ketat.
+                            </p>
+                            <p>
+                                Seiring bertambahnya keahlian dan tingginya apresiasi dari para penikmat camilan, Omah Rambak memperluas jangkauan. Kami menyediakan kerupuk kulit sapi dalam beragam varian: mulai dari yang <em>sudah matang renyah siap santap</em>, varian <em>mentah siap goreng</em> dengan daya simpan panjang, hingga kemasan <em>eceran</em> yang bersahabat untuk konsumsi harian.
+                            </p>
+                            <p>
+                                Bagi kami, kerupuk kulit bukan sekadar pelengkap hidangan, melainkan simbol kehangatan tradisi Indonesia. Setiap potong kerupuk yang Anda nikmati adalah bukti cinta kami pada bahan baku berkualitas dan proses bersih tanpa kompromi.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Visi & Misi Section -->
+        <section class="py-16 bg-gradient-to-b from-orange-100/50 to-orange-50/30 border-y border-orange-200/60">
+            <div class="container mx-auto px-4 sm:px-6">
+                <div class="text-center max-w-xl mx-auto mb-12 animate-on-scroll fade-in-up">
+                    <span class="text-xs font-bold text-orange-600 tracking-wider uppercase bg-orange-200/70 px-3 py-1 rounded-full">Landasan Kami</span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-gray-900 mt-2 mb-3">Visi & Misi Omah Rambak</h2>
+                    <p class="text-sm text-gray-600">Arah dan nilai utama yang menjadi pedoman langkah kami setiap hari.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    <!-- Visi -->
+                    <div class="bg-white p-7 rounded-3xl shadow-sm border border-orange-100 flex flex-col animate-on-scroll fade-in-up">
+                        <div class="w-14 h-14 rounded-2xl bg-orange-500 text-white flex items-center justify-center text-2xl mb-5 shadow">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Visi Kami</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed flex-grow">
+                            Menjadi produsen kerupuk kulit sapi terdepan dan terpercaya di Indonesia yang diakui atas keaslian rasa, konsistensi kualitas, serta komitmen pada higienitas pengolahan.
+                        </p>
+                    </div>
+
+                    <!-- Misi -->
+                    <div class="bg-white p-7 rounded-3xl shadow-sm border border-orange-100 flex flex-col animate-on-scroll fade-in-up" style="transition-delay: 0.1s;">
+                        <div class="w-14 h-14 rounded-2xl bg-amber-500 text-white flex items-center justify-center text-2xl mb-5 shadow">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Misi Kami</h3>
+                        <ul class="space-y-2.5 text-sm text-gray-600">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-orange-500 mt-1 mr-2 flex-shrink-0"></i>
+                                <span>Menggunakan 100% kulit sapi pilihan tanpa bahan kimia pengawet.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-orange-500 mt-1 mr-2 flex-shrink-0"></i>
+                                <span>Mempertahankan formula bumbu warisan keluarga yang gurih dan tidak bikin enek.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-orange-500 mt-1 mr-2 flex-shrink-0"></i>
+                                <span>Memberikan pelayanan ramah, respon cepat, dan packing aman hingga alamat pelanggan.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-orange-500 mt-1 mr-2 flex-shrink-0"></i>
+                                <span>Mendukung pelestarian makanan khas tradisional Nusantara.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Nilai & Keunggulan -->
+        <section class="py-16 sm:py-20 bg-white">
+            <div class="container mx-auto px-4 sm:px-6">
+                <div class="text-center max-w-xl mx-auto mb-12 animate-on-scroll fade-in-up">
+                    <span class="text-xs font-bold text-orange-600 tracking-wider uppercase bg-orange-100 px-3 py-1 rounded-full">Komitmen Mutu</span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-gray-900 mt-2 mb-3">Mengapa Memilih Kami?</h2>
+                    <p class="text-sm text-gray-600">Alasan mengapa ribuan pelanggan setia mempercayakan camilan mereka kepada Omah Rambak.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+                    <div class="bg-orange-50/50 p-6 rounded-2xl border border-orange-100 text-center hover:bg-orange-50 transition duration-300 animate-on-scroll pop-in">
+                        <div class="w-16 h-16 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center text-3xl mx-auto mb-4">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <h3 class="font-bold text-gray-900 text-lg mb-2">Bahan Baku Pilihan</h3>
+                        <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                            Kulit sapi segar yang dibersihkan dengan teliti, memastikan kerupuk mengembang optimal dan tidak berbau tengik.
+                        </p>
+                    </div>
+
+                    <div class="bg-orange-50/50 p-6 rounded-2xl border border-orange-100 text-center hover:bg-orange-50 transition duration-300 animate-on-scroll pop-in" style="transition-delay: 0.1s;">
+                        <div class="w-16 h-16 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center text-3xl mx-auto mb-4">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <h3 class="font-bold text-gray-900 text-lg mb-2">Cita Rasa Otentik</h3>
+                        <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                            Rasa gurih sedap dengan perpaduan rempah alami, lezat dimakan langsung maupun sebagai teman kuah santan dan bakso.
+                        </p>
+                    </div>
+
+                    <div class="bg-orange-50/50 p-6 rounded-2xl border border-orange-100 text-center hover:bg-orange-50 transition duration-300 animate-on-scroll pop-in" style="transition-delay: 0.2s;">
+                        <div class="w-16 h-16 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center text-3xl mx-auto mb-4">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h3 class="font-bold text-gray-900 text-lg mb-2">Pelayanan Prima</h3>
+                        <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                            Respon cepat via WhatsApp, kemasan rapi berstandar pengiriman luar kota, dan garansi sampai di tangan dengan aman.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tim Omah Rambak -->
+        <section class="py-16 bg-orange-50/40 border-t border-orange-100">
+            <div class="container mx-auto px-4 sm:px-6">
+                <div class="text-center max-w-xl mx-auto mb-12 animate-on-scroll fade-in-up">
+                    <span class="text-xs font-bold text-orange-600 tracking-wider uppercase bg-orange-100 px-3 py-1 rounded-full">Orang di Balik Layar</span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-gray-900 mt-2 mb-3">Tim Kami</h2>
+                    <p class="text-sm text-gray-600">Sosok yang berdedikasi menjaga cita rasa dan kelancaran pesanan Anda.</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-orange-100 animate-on-scroll fade-in-up">
+                        <div class="w-20 h-20 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center text-2xl font-bold mx-auto mb-4 border-2 border-orange-400">
+                            M
+                        </div>
+                        <h4 class="font-bold text-gray-900 text-base">Mujiono</h4>
+                        <p class="text-xs text-orange-600 font-medium">Pendiri & Pemilik</p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-orange-100 animate-on-scroll fade-in-up" style="transition-delay: 0.1s;">
+                        <div class="w-20 h-20 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center text-2xl font-bold mx-auto mb-4 border-2 border-orange-400">
+                            E
+                        </div>
+                        <h4 class="font-bold text-gray-900 text-base">Edi</h4>
+                        <p class="text-xs text-orange-600 font-medium">Kepala Produksi & Mutu</p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-orange-100 animate-on-scroll fade-in-up" style="transition-delay: 0.2s;">
+                        <div class="w-20 h-20 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center text-2xl font-bold mx-auto mb-4 border-2 border-orange-400">
+                            U
+                        </div>
+                        <h4 class="font-bold text-gray-900 text-base">Umaroh</h4>
+                        <p class="text-xs text-orange-600 font-medium">Layanan Pelanggan & Pemasaran</p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-orange-100 animate-on-scroll fade-in-up" style="transition-delay: 0.3s;">
+                        <div class="w-20 h-20 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center text-2xl font-bold mx-auto mb-4 border-2 border-orange-400">
+                            <i class="fas fa-boxes"></i>
+                        </div>
+                        <h4 class="font-bold text-gray-900 text-base">Tim Logistik</h4>
+                        <p class="text-xs text-orange-600 font-medium">Pengemasan & Ekspedisi</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kontak Langsung Call to Action -->
+        <section class="py-14 bg-white border-t border-orange-100">
+            <div class="container mx-auto px-4 sm:px-6 max-w-4xl text-center">
+                <div class="bg-gradient-to-r from-orange-600 to-amber-600 text-white p-8 sm:p-12 rounded-3xl shadow-lg relative overflow-hidden">
+                    <h2 class="text-2xl sm:text-3xl font-extrabold mb-3">Punya Pertanyaan atau Ingin Pesan Kiloan?</h2>
+                    <p class="text-sm sm:text-base text-orange-100 max-w-xl mx-auto mb-6 leading-relaxed">
+                        Kami melayani pembelian satuan, kiloan, maupun pesanan skala besar untuk acara keluarga, hajatan, dan pasokan restoran.
+                    </p>
+                    <a href="https://wa.me/6283111481327?text=Halo%20Omah%20Rambak,%20saya%20ingin%20berkonsultasi%20mengenai%20pesanan%20kerupuk%20rambak." target="_blank" rel="noopener noreferrer" class="inline-flex items-center bg-white text-orange-600 hover:bg-orange-50 font-bold py-3 px-8 rounded-xl text-base transition duration-200 button-click-effect shadow">
+                        <i class="fab fa-whatsapp text-green-500 text-xl mr-2"></i> Hubungi Kami Sekarang
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Floating WhatsApp CTA Button -->
+    <a href="https://wa.me/6283111481327?text=Halo%20Omah%20Rambak,%20saya%20ingin%20bertanya%20seputar%20produk%20dan%20pemesanan." target="_blank" rel="noopener noreferrer" class="floating-whatsapp" aria-label="Hubungi Omah Rambak via WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+        <span class="floating-whatsapp-tooltip">Chat Kami di WhatsApp</span>
+    </a>
+
+    <!-- Footer -->
+    <footer class="bg-orange-800 text-white pt-10 pb-8 mt-auto border-t border-orange-700">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left">
+                <div>
+                    <h3 class="text-lg font-bold flex items-center justify-center sm:justify-start space-x-2">
+                        <i class="fas fa-cookie-bite text-amber-300"></i>
+                        <span>Omah <span class="text-amber-300">Rambak</span></span>
+                    </h3>
+                    <p class="text-xs text-orange-200 mt-1">Produsen Kerupuk Kulit Sapi Asli Berkualitas.</p>
+                </div>
+                <div class="flex space-x-4 text-lg">
+                    <a href="https://wa.me/6283111481327" target="_blank" rel="noopener noreferrer" class="hover:text-amber-300 transition" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" class="hover:text-amber-300 transition" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="hover:text-amber-300 transition" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+            <div class="pt-6 mt-6 border-t border-orange-700/60 text-center text-xs text-orange-300">
+                <p>&copy; 2026 Omah Rambak. Semua Hak Dilindungi.</p>
             </div>
         </div>
     </footer>
-    
-    <div id="toastNotification"><span id="toastMessage"></span></div>
 
-    <script>
-        let toastTimeout;
-        function showToast(message, type = 'success', duration = 3000) {
-            const toast = document.getElementById('toastNotification');
-            const toastMessage = document.getElementById('toastMessage');
-            if (!toast || !toastMessage) { console.error("Toast elements not found!"); alert(message); return; }
-            toastMessage.textContent = message;
-            toast.className = 'fixed top-5 right-5 text-white py-3 px-5 rounded-lg shadow-md opacity-0 transform translate-y-[-20px] transition-all duration-300 ease-out z-[1000]';
-            if (type === 'success') toast.classList.add('success');
-            else if (type === 'error') toast.classList.add('error');
-            else if (type === 'info') toast.classList.add('info');
-            else toast.classList.add('success');
-            toast.classList.add('show');
-            clearTimeout(toastTimeout);
-            toastTimeout = setTimeout(() => { toast.classList.remove('show'); }, duration);
-        }
+    <!-- Toast Notification Container -->
+    <div id="toastNotification"><i id="toastIcon" class="fas fa-check-circle text-lg"></i><span id="toastMessage"></span></div>
 
-        const CART_KEY = 'omahRambakCart'; // Hanya untuk updateCartIconCount
-        function getCart() { return JSON.parse(localStorage.getItem(CART_KEY)) || []; }
-        function updateCartIconCount() {
-            const cart = getCart();
-            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-            const elementsToUpdate = [document.getElementById('cartItemCount'), document.getElementById('cartItemCountMobile')];
-            elementsToUpdate.forEach(el => {
-                if (el) {
-                    if (totalItems > 0) { el.textContent = totalItems; el.classList.remove('hidden'); } 
-                    else { el.classList.add('hidden'); }
-                }
-            });
-        }
-
-        const mobileMenuButton = document.getElementById('mobileMenuButton');
-        const mobileMenu = document.getElementById('mobileMenu');
-        if (mobileMenuButton && mobileMenu) {
-            mobileMenuButton.addEventListener('click', function() { mobileMenu.classList.toggle('hidden'); });
-        }
-
-        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
-        const observerCallback = (entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    if (entry.target.classList.contains('stagger-children')) {
-                        const children = Array.from(entry.target.children);
-                        children.forEach((child, index) => {
-                            if (!child.style.transitionDelay) child.style.transitionDelay = `${index * 0.12}s`;
-                            if (child.classList.contains('pop-in') || child.classList.contains('animate-on-scroll') || child.classList.contains('fade-in-up')) {
-                                child.classList.add('is-visible');
-                            }
-                        });
-                    }
-                    if (!entry.target.classList.contains('keep-observing')) observer.unobserve(entry.target);
-                }
-            });
-        };
-        const scrollObserver = new IntersectionObserver(observerCallback, observerOptions);
-
-        function observeElements(selector) {
-            const elements = document.querySelectorAll(selector);
-            elements.forEach(el => scrollObserver.observe(el));
-        }
-        
-        function observeLoadAnimations() {
-            const elementsToAnimate = document.querySelectorAll('.animate-on-load');
-            elementsToAnimate.forEach(el => { setTimeout(() => el.classList.add('is-visible'), 50); });
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            updateCartIconCount();
-            observeLoadAnimations(); 
-            observeElements('.animate-on-scroll, .stagger-children'); 
-            
-            const currentPage = window.location.pathname.split("/").pop() || 'index.html';
-            const navLinks = { 'index.html': 'navBeranda', 'catalog.html': 'navKatalog', 'about.html': 'navTentang', 'cart.html': 'navKeranjang' };
-            Object.values(navLinks).forEach(id => {
-                const el = document.getElementById(id);
-                if (el) el.classList.remove('active-link', 'text-orange-200', 'font-semibold');
-            });
-            const activeNavId = navLinks[currentPage];
-            if (activeNavId) {
-                const activeEl = document.getElementById(activeNavId);
-                if (activeEl) activeEl.classList.add('active-link', 'text-orange-200', 'font-semibold');
-            }
-        });
-    </script>
+    <!-- Modular Scripts -->
+    <script src="assets/js/main.js"></script>
 </body>
 </html>

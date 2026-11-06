@@ -1,0 +1,446 @@
+/* ==========================================================================
+   Omah Rambak - Main Stylesheet
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Base & Reset
+   -------------------------------------------------------------------------- */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    overflow-x: hidden;
+    color: #1f2937;
+    background-color: #fffaf5;
+}
+
+/* --------------------------------------------------------------------------
+   2. Header & Navigation
+   -------------------------------------------------------------------------- */
+.header-nav {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.nav-link-animate {
+    position: relative;
+    padding-bottom: 4px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.nav-link-animate::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0;
+    height: 2px;
+    background-color: #f59e0b;
+    border-radius: 9999px;
+    transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-link-animate:hover::after,
+.nav-link-animate.active-link::after {
+    width: 100%;
+}
+
+.nav-link-animate.active-link {
+    color: #fde68a !important;
+    font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   3. Hero Section
+   -------------------------------------------------------------------------- */
+.hero-bg {
+    background-image: linear-gradient(rgba(17, 24, 39, 0.65), rgba(17, 24, 39, 0.75)), url('../images/kerupuk-rambak-banner.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: scroll;
+}
+
+@media (min-width: 1024px) {
+    .hero-bg {
+        background-attachment: fixed;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   4. Badges & Counters
+   -------------------------------------------------------------------------- */
+.cart-item-count-badge {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: #ffffff;
+    border-radius: 9999px;
+    min-width: 1.25rem;
+    height: 1.25rem;
+    padding: 0 0.35rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: -6px;
+    right: -10px;
+    box-shadow: 0 2px 5px rgba(220, 38, 38, 0.4);
+    transition: transform 0.2s ease;
+}
+
+.cart-item-count-badge.badge-bounce {
+    animation: badgeBounce 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes badgeBounce {
+    0% { transform: scale(0.6); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+}
+
+/* --------------------------------------------------------------------------
+   5. Animations & Transitions
+   -------------------------------------------------------------------------- */
+.animate-on-scroll,
+.animate-on-load {
+    opacity: 0;
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+
+.animate-on-scroll.is-visible,
+.animate-on-load.is-visible {
+    opacity: 1;
+    transform: none !important;
+}
+
+.fade-in-up {
+    transform: translateY(30px);
+}
+
+.fade-in-down {
+    transform: translateY(-30px);
+}
+
+.slide-in-left {
+    transform: translateX(-40px);
+}
+
+.slide-in-right {
+    transform: translateX(40px);
+}
+
+.pop-in {
+    transform: scale(0.92);
+}
+
+.stagger-children > * {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.stagger-children.is-visible > * {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Spinner */
+.loading-spinner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 180px;
+}
+
+.loading-spinner {
+    border: 3px solid rgba(234, 88, 12, 0.15);
+    border-left-color: #ea580c;
+    border-radius: 50%;
+    width: 42px;
+    height: 42px;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Button & Interactive Effects */
+.button-click-effect {
+    transition: transform 0.12s ease-out, box-shadow 0.15s ease-out, background-color 0.15s ease;
+}
+
+.button-click-effect:active {
+    transform: scale(0.96);
+}
+
+.product-card-hover {
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
+}
+
+.product-card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 30px -10px rgba(234, 88, 12, 0.15), 0 8px 16px -6px rgba(0, 0, 0, 0.08);
+}
+
+/* --------------------------------------------------------------------------
+   6. Toast Notifications
+   -------------------------------------------------------------------------- */
+#toastNotification {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-20px) scale(0.95);
+    transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 9999;
+    font-size: 0.925rem;
+    font-weight: 500;
+    max-width: 90vw;
+}
+
+#toastNotification.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+}
+
+#toastNotification.success {
+    background-color: #065f46;
+    color: #ffffff;
+    border-left: 4px solid #10b981;
+}
+
+#toastNotification.error {
+    background-color: #991b1b;
+    color: #ffffff;
+    border-left: 4px solid #ef4444;
+}
+
+#toastNotification.info {
+    background-color: #1e40af;
+    color: #ffffff;
+    border-left: 4px solid #3b82f6;
+}
+
+/* --------------------------------------------------------------------------
+   7. Quantity Controls
+   -------------------------------------------------------------------------- */
+.quantity-control {
+    display: inline-flex;
+    align-items: center;
+    background-color: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.quantity-button {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f9fafb;
+    color: #374151;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.quantity-button:hover {
+    background-color: #ea580c;
+    color: #ffffff;
+}
+
+.quantity-input {
+    width: 44px;
+    height: 32px;
+    text-align: center;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border: none;
+    background-color: #ffffff;
+    color: #111827;
+    -moz-appearance: textfield;
+}
+
+.quantity-input::-webkit-outer-spin-button,
+.quantity-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.quantity-input:focus {
+    outline: none;
+    box-shadow: inset 0 0 0 2px #ea580c;
+}
+
+/* --------------------------------------------------------------------------
+   8. Modal Dialog
+   -------------------------------------------------------------------------- */
+.modal-overlay {
+    background-color: rgba(17, 24, 39, 0.6);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.modal-content {
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+}
+
+/* --------------------------------------------------------------------------
+   9. Floating WhatsApp CTA
+   -------------------------------------------------------------------------- */
+.floating-whatsapp {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background-color: #25D366;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    box-shadow: 0 4px 16px rgba(37, 211, 102, 0.45);
+    z-index: 990;
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+}
+
+.floating-whatsapp:hover {
+    transform: scale(1.1) translateY(-2px);
+    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.6);
+}
+
+.floating-whatsapp-tooltip {
+    position: absolute;
+    right: 68px;
+    white-space: nowrap;
+    background-color: #1f2937;
+    color: #ffffff;
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 6px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(10px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.floating-whatsapp:hover .floating-whatsapp-tooltip {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* --------------------------------------------------------------------------
+   10. Filter Chips & UI Elements
+   -------------------------------------------------------------------------- */
+.filter-chip {
+    padding: 6px 16px;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border: 1px solid #fed7aa;
+    background-color: #ffffff;
+    color: #9a3412;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.filter-chip:hover {
+    background-color: #ffedd5;
+    border-color: #fb923c;
+}
+
+.filter-chip.active {
+    background-color: #ea580c;
+    border-color: #ea580c;
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgba(234, 88, 12, 0.3);
+}
+
+/* Custom Range Slider */
+input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    background: #ea580c;
+    cursor: pointer;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    border: 2px solid #ffffff;
+}
+
+input[type="range"]::-moz-range-thumb {
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    background: #ea580c;
+    cursor: pointer;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    border: 2px solid #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   11. FAQ Accordion
+   -------------------------------------------------------------------------- */
+.faq-item {
+    border-bottom: 1px solid #fed7aa;
+    transition: background-color 0.2s ease;
+}
+
+.faq-question {
+    width: 100%;
+    padding: 1.25rem 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    font-weight: 600;
+    color: #374151;
+    cursor: pointer;
+}
+
+.faq-question:hover {
+    color: #ea580c;
+}
+
+.faq-icon {
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.faq-item.active .faq-icon {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s cubic-bezier(0.16, 1, 0.3, 1), padding 0.3s ease;
+    color: #4b5563;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 250px;
+    padding-bottom: 1.25rem;
+}
+
